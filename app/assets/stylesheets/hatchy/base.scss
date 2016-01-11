@@ -1,0 +1,41 @@
+.project-card {
+	width: 337px;
+	height: 474px;
+	max-height: 474px;
+	border: 1px solid #EFEFEF;
+  border-radius: 4px;
+  overflow: hidden;
+  background: white;
+  text-align: left;
+}
+.project-card .header {
+	width: 338px;
+	height: 200px;
+}
+.project-card .content {
+	position: relative;
+	padding-bottom: 0;
+	padding-top: 20px;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+.project-card .footer {
+  padding: 20px;
+  font-weight: 500;
+  color: #7e7e7e;
+}
+.project-card .content .title {
+	font-weight: 300;
+}
+.project-card .content .body {
+	color: #7e7e7e;
+}
+#flash_notice{
+  @extend .alert-info;
+}
+#flash_error, #flash_alert{
+  @extend .alert-danger;
+}
+#flash_warning{
+  @extend .alert-warning;
+}
