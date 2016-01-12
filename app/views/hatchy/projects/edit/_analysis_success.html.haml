@@ -1,0 +1,12 @@
+.container-fluid.hidden#analysis_success_dashboard
+  .row
+    .text-center
+      %h1= "#{current_user.first_name} Your project was sent to analysis"
+      %i.fa.fa-check-circle.fa-5x{style:"color:limegreen;"}
+      %h4 You will receive our response within 4 working days in the email:
+  .row
+    %hr
+    .col-md-12.text-center
+      %h3= @project.user.email
+      %hr
+      %h4 While waiting for your answer, you can continue editing your project! We also recommend that you go collecting feedback with people nearby and planning how will his campaign.
