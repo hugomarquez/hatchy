@@ -4,7 +4,7 @@ class CreateHatchyAnnouncements < ActiveRecord::Migration
     	t.text				:message, 		null:false, limit: 80
     	t.timestamp 	:starts_at, 	null: false
     	t.timestamp 	:ends_at,			null: false
-      t.timestamps
+    	t.timestamps
     end
   end
 end
