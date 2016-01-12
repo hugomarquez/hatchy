@@ -1,0 +1,146 @@
+en:
+  models:
+    hatchy/shared:
+      attributes:
+        id: Id
+        created_at: Created at
+        updated_at: Updated at
+    hatchy/announcement:
+      one: Announcement
+      other: Announcements
+      attributes:
+        message: Message
+        starts_at: Starts at
+        ends_at: Ends at
+    hatchy/bank:
+      one: Bank
+      other: Banks
+      attributes:
+        name: Name
+        code: Code
+    hatchy/bank_account:
+      one: Bank Account
+      other: Bank Accounts
+      attributes:
+        account: Account
+        account_digit: Account Digit
+    hatchy/category:
+      one: Category
+      other: Categories
+      attributes:
+        name: Name
+    hatchy/contribution:
+      one: Contribution
+      other: Contributions
+      attributes:
+        value: Value
+        status: Status
+        name: Name
+        email: Email
+        document: Document
+        address_street: Address Street
+        address_number: Address Number
+        address_city: Address City
+        address_zip: Zip Code
+        address_state: Address State
+        address_phone: Address Phone
+        ip_address: IP Address
+        card_type: Credit Card Type
+        card_expires_on: Credit Card Expiration
+        anonymous: Anonymous
+        notified_when_finish: Notify when finish
+    hatchy/country:
+      one: Country
+      other: Countries
+      attributes:
+        name: Name
+        code2: ISO 2
+        code3: ISO 3
+        continent: Continent
+        tld: Top level domain
+        currency: Currency
+        eu_member: EU Member
+    hatchy/project:
+      one: Project
+      other: Projects
+      attributes:
+        project_img: Project Image
+        city: City
+        name: Name
+        headline: Headline
+        about: About
+        budget: Budget
+        video_url: Video URL
+        short_url: Short URL
+        goal: Goal
+        online_days: Online days
+        online_date: Online date
+        expires_at: Expires at
+        rejected_at: Rejected at
+        send_to_draft_at: Send to draft at
+        status: Status
+        recommended: Recommended
+      states:
+        draft: Draft
+        analysis: Analysis
+        rejected: Rejected
+        approved: Approved
+        online: Online
+        failed: Failed
+        successful: Successful
+        trash: Trash
+        deleted: Deleted
+    hatchy/project_account:
+      one: Project Account
+      other: Project Accounts
+      attributes:
+        account_type: Account Type
+        email: Email
+        phone: Phone
+        account: Account
+        account_digit: Account Digit
+        owner_name: Owner Name
+        owner_document: Owner Document
+        address_street: Address Street
+        address_number: Address Number
+        address_city: Address City
+        address_state: Address State
+        address_zip: Zip Code
+        send_to_analysis_at: Send to analysis at
+        send_to_rejected_at: Send to rejected at
+    hatchy/reward:
+      one: Reward
+      other: Rewards
+      attributes:
+        min_value: Minimum Value
+        max_contributions: Maximum Contributions
+        description: Description
+        deliver_at: Deliver at
+        row_order: Row Order
+    hatchy/user:
+      one: User
+      other: Users
+      attributes:
+        admin: Admin
+        profile_img: Profile Image
+        cover_img: Cover Image
+        facebook_link: Facebook
+        twitter_link: Twitter
+        other_link: Other Social Network
+        first_name: First Name
+        last_name: Last Name
+        about: About
+        newsletter: Newsletter
+        subs_projects: Subscribe to Projects
+        locale: Locale
+        address_street: Address Street
+        address_number: Address Number
+        address_city: Address City
+        address_state: Address State
+        address_zip: Zip Code
+        document: Document
+        phone: Phone
+        mobile: Mobile
+        email: Email
+  controllers:
+  views:
