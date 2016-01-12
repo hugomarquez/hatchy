@@ -25,4 +25,12 @@ module Hatchy::LayoutHelper
 		@layout_footer.nil? ? true : @layout_footer
 	end
 
+	def user_profile
+		if current_user.profile_img?
+			current_user.profile_img_url.to_s
+		else
+			'http://www.temazkalite.com/img-demo/unknown-user.gif'
+		end
+	end
+
 end
