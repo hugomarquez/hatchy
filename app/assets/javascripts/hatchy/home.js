@@ -1,10 +1,10 @@
 var home = (function(){
 	// Cache DOM
-	var $owl-projects = $('#owl-projects');
+	var $owl_projects = $('#owl-projects');
 
 	// Functions
 	function projectsCarousel() {
-		$owl-projects.owlCarousel({
+		$owl_projects.owlCarousel({
 			autoPlay: true,
   		stopOnHover: true,
   		items: 3
