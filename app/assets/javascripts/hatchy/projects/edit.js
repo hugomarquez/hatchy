@@ -1,4 +1,4 @@
-var edit_projects = (function(){
+var edit = (function(){
   // Cache DOM
   var $rowSections = $('.container-fluid .hidden');
   var $currentRow = $('.container-fluid .hidden' + window.location.hash + '_dashboard');

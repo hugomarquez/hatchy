@@ -1,6 +1,6 @@
 - @nav_type = "navbar-fixed-top"
 - content_for :javascripts do 
-	= javascript_include_tag "hatchy/edit_projects"
+	= javascript_include_tag "hatchy/projects/edit"
 .row
 	%section.sidebar-page.expanded{style:"overflow:hidden; outline:none;"}
 		= render "hatchy/projects/edit/project_sidebar"
@@ -13,6 +13,6 @@
 			= render "hatchy/projects/edit/project_card"
 			= render "hatchy/projects/edit/rewards"
 			- if !@project.draft?
-				/= render "hatchy/projects/edit/account"
+				= render "hatchy/projects/edit/account"
 			- if @project.analysis?
 				= render "hatchy/projects/edit/analysis_success"
