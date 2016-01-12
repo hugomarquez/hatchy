@@ -1,68 +1,77 @@
-jQuery(function() {
-  $(function() {
-    var announcements, flash, i, obj, results, stack, theme;
-    announcements = $('#announcements').data('announcements');
-    flash = $('#flash');
-    stack = {
-      "dir1": "up",
-      "dir2": "left",
-      "firstpos1": 25,
-      "firstpos2": 25
-    };
-    theme = 'brighttheme';
+var application = (function(){
+  // Cache DOM
+  var $announcements = $('#announcements').data('announcements');
+  var $flash = $('#flash');
+
+  // Local Vars
+  var theme = 'brighttheme';
+  var stack = {
+    "dir1": "up",
+    "dir2": "left",
+    "firstpos1": 25,
+    "firstpos2": 25
+  };
+
+  // Functions
+  function setPNotify() {
     PNotify.prototype.options.styling = "fontawesome";
-    if (flash.length) {
-      new PNotify({
-        title: flash.data('type'),
-        text: flash.data('message'),
-        type: flash.data('type'),
-        buttons: {
-          closer: true,
-          sticker: false,
-          icon: "fa fa-times",
-          show_on_nonblock: true
+  }
+
+  function newNotification(dataObj, notificaitonType) {
+    new PNotify({
+      if(notificaitonType == 'flash') {
+        title: dataObj.data('type'),
+        text: dataObj.data('message'),
+        type: dataObj.data('type'),
+      }else if( notificaitonType == 'announcements') {
+        title: "Announcement",
+        text: dataObj.data('message'),
+        type: "notice",
+        icon: "fa fa-info fa-lg",
+        hide: false,
+        nonblock: {
+          nonblock: true,
+          nonblock_opacity: .2
         },
-        addclass: "stack-bottomright",
-        stack: stack,
-        styling: theme
-      });
+        before_close: function(notice) {
+          return $.ajax({ url: "announcements/" + obj.id + "/hide"});
+        }
+      }
+      addclass: "stack-bottomright",
+      stack: stack,
+      styling: theme,
+      buttons: {
+        closer: true,
+        sticker: false,
+        icon: "fa fa-times",
+        show_on_nonblock: true
+      },
+    });
+  }
+
+  function checkFlashMsg() {
+    if ($flash.length) {
+      newNotification($flash, 'flash');
     }
-    if (announcements !== null) {
+  }
+
+  function checkAnnouncements() {
+    if ($announcements !== null) {
       i = 0;
       results = [];
-      while (i < announcements.length) {
-        obj = announcements[i];
-        new PNotify({
-          title: "Announcement",
-          text: obj.message,
-          type: "notice",
-          icon: "fa fa-info fa-lg",
-          hide: false,
-          styling: theme,
-          addclass: "stack-bottomright",
-          stack: stack,
-          buttons: {
-            closer: true,
-            sticker: false,
-            icon: "fa fa-times",
-            show_on_nonblock: true
-          },
-          mobile: {
-            swipe_dismiss: true
-          },
-          nonblock: {
-            nonblock: true,
-            nonblock_opacity: .2
-          },
-          before_close: function(notice) {
-            return $.ajax({
-              url: "announcements/" + obj.id + "/hide"
-            });
-          }
-        });
+      while (i < $announcements.length) {
+        dataObj = announcements[i];
+        newNotification(dataObj, 'announcements');
         results.push(i++);
       }
       return results;
     }
-  });
-});
+  }
+
+  setPNotify();
+  checkFlashMsg();
+  checkAnnouncements();
+
+  return {};
+
+})();

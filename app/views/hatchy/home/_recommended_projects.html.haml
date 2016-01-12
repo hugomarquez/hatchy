@@ -1,0 +1,7 @@
+%section
+	.container
+		%h2.text-center Discover Amazing Projects
+		.owl-carousel#owl-projects
+			- @recommended_projects.each do |project|
+				.items
+					= render "hatchy/shared/project", project: project

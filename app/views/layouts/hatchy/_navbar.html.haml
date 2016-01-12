@@ -1,2 +1,39 @@
 / Static navbar
-%nav.navbar.navbar-default
+%nav.navbar.navbar-default{class: "#{navbar_type}"}
+  .container
+    .navbar-header
+      %button.navbar-toggle.collapsed{data:{target:"#navbar", toggle:"collapse"},"aria-controls": "navbar", "aria-expanded":false, type:"button"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      %a.navbar-brand.pull-left{href:"#{hatchy.root_path}"} Hatchy
+    .navbar-header-right
+      #navbar.navbar-collapse.collapse
+        %ul.nav.navbar-nav.navbar-right
+          %li.active= link_to "Dashboard", hatchy.dashboard_path
+          %li
+            %a{href:"#about"} About
+          %li
+            %a{href:"#contact"} Contact
+          - if current_user
+            %li.dropdown
+              %a.dropdown-toggle{href:"#", "aria-expanded":false, "aria-haspopup":true, data:{toggle:"dropdown"},role:"button"}
+                = image_tag user_profile, class:'img-circle', width:'30', height:'30'
+                &nbsp;
+                %span.caret
+              %ul.dropdown-menu
+                %li.dropdown-header Actions
+                %li= link_to "New Project", new_project_path
+                %li
+                  %a{href:"#"} Something else here
+                - if current_user.admin?
+                  %li.divider{role:"separator"}
+                  %li.dropdown-header Admin
+                  %li= link_to 'Admin Dashboard', admin_root_path
+                %li.divider{role:"separator"}
+                %li.dropdown-header Settings
+                %li= link_to 'Settings', "#{edit_user_path(current_user)}#about_you"
+                %li= link_to 'Sign Out', destroy_user_session_path, method: :delete
+          - else
+            %li= link_to 'Log in', hatchy.new_user_session_path

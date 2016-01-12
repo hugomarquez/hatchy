@@ -22,6 +22,7 @@ module Hatchy
     initializer 'Hatchy precompile hook', group: :all do |app|
       app.config.assets.precompile += %w(
         hatchy/hatchy.js
+        hatchy/home.js
         hatchy/hatchy.css
         )
     end

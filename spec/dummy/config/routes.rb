@@ -1,4 +1,3 @@
 Rails.application.routes.draw do
-
-  mount Hatchy::Engine => "/hatchy"
+	mount Hatchy::Engine => "/"
 end

@@ -2,6 +2,7 @@
 //= require 'jquery_ujs'
 //= require 'hatchy/bootstrap/bootstrap'
 //= require 'hatchy/libraries/pnotify.custom.js'
+//= require 'hatchy/libraries/owl.carousel.js'
 //= require 'hatchy/libraries/summernote.js'
 //= require 'hatchy/libraries/jquery.countdown.js'
 //= require 'hatchy/application.js'
