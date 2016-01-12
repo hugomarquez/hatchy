@@ -1,18 +1,17 @@
 module Hatchy
   class Project < ActiveRecord::Base
-
-  	has_one			:account, 				class_name:'Hatchy::ProjectAccount'
-  	has_many 		:rewards, 				class_name:'Hatchy::Reward'
-    has_many 		:contributions, 	class_name:'Hatchy::Contribution'
-    has_many 		:payments,       	through: :contributions
-  	belongs_to 	:user, 						class_name:'Hatchy::User'
-  	belongs_to	:category, 				class_name:'Hatchy::Category'
+    has_one     :account,         class_name:'Hatchy::ProjectAccount'
+    has_many    :rewards,         class_name:'Hatchy::Reward'
+    has_many    :contributions,   class_name:'Hatchy::Contribution'
+    has_many    :payments,        through: :contributions
+    belongs_to  :user,            class_name:'Hatchy::User'
+    belongs_to  :category,        class_name:'Hatchy::Category'
 
     accepts_nested_attributes_for :account
-  	accepts_nested_attributes_for :rewards, allow_destroy: true
+    accepts_nested_attributes_for :rewards, allow_destroy: true
 
-  	mount_uploader :project_img, Hatchy::ProjectUploader
-  	validates :name, presence: true, uniqueness: true
+    mount_uploader :project_img, Hatchy::ProjectUploader
+    validates :name, presence: true, uniqueness: true
 
     scope :recommended, -> { where(recommended: true, status:'online') }
     scope :recent, -> { where(online_date: 5.days.ago.. Time.current) }

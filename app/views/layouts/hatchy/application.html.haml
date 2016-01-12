@@ -13,7 +13,7 @@
 			= yield
 		- if show_layout_footer?
 			= render "layouts/hatchy/footer"
-		
+
 		- @announcements = Hatchy::Announcement.current(cookies.signed[:hidden_announcement_ids])
 		= content_tag :div, id: 'announcements', data:{announcements:@announcements.to_json}, class: 'hidden' do 
 			%p Loading announcements

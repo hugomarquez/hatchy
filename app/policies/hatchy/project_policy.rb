@@ -15,6 +15,5 @@ module Hatchy
 		def publish?
 			create? && record.approved?
 		end
-		
 	end
 end
