@@ -1,5 +1,7 @@
 module Hatchy
   class Project < ActiveRecord::Base
+    include Hatchy::ProjectStates
+
     has_one     :account,         class_name:'Hatchy::ProjectAccount'
     has_many    :rewards,         class_name:'Hatchy::Reward'
     has_many    :contributions,   class_name:'Hatchy::Contribution'

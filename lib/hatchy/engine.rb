@@ -24,6 +24,7 @@ module Hatchy
         hatchy/hatchy.js
         hatchy/home.js
         hatchy/dashboard.js
+        hatchy/edit_projects.js
         hatchy/hatchy.css
         )
     end

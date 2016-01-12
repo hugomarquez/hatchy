@@ -1,0 +1,24 @@
+.container-fluid.hidden#basic_dashboard
+  .row
+    .text-center
+      %h1 Complete the information below
+      %h4 The data reported in this section can not be modified once the project goes live. Fill out carefully and review before
+  .row
+    %hr
+    .col-md-12
+      = form_for @project, html:{class: "form-horizontal"} do |f|
+        = form_group_for f, :name do
+          .col-sm-5
+            = f.text_field :name, class: "form-control", disabled: form_disabled(f, :name)
+            %p.small Give a name that people will remember easily. Do not exceed 50 characters.
+        = form_group_for f, :category do
+          .col-sm-5
+            = f.collection_select(:category_id, Hatchy::Category.order(:name), :id, :name, {}, class:'form-control', disabled: form_disabled(f, :category_id))
+            %p.small Choose the most appropriate to your project.
+        = form_group_for f, :city do 
+          .col-sm-5
+            = f.text_field :city, class: "form-control", disabled: form_disabled(f, :city)
+        .form-group
+          .col-sm-offset-2.col-sm-10
+            = hidden_field_tag 'anchor', 'basic'
+            = f.submit "Save Project" , class: 'btn btn-success'

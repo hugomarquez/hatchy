@@ -1,0 +1,67 @@
+.sidebar-wrapper
+	%ul.nav.nav-sidebar#project_menu
+		%li
+			= link_to '#campaign' do 
+				%i.fa.fa-dashboard 
+				%span My Campaign
+		- if !@project.online?
+			%li
+				= link_to '#basic' do 
+					%i.fa.fa-pencil 
+					%span Basic
+		- if !@project.online?
+			%li
+				= link_to '#goal' do 
+					%i.fa.fa-list-ol 
+					%span Goals
+		%li
+			= link_to '#description' do 
+				%i.fa.fa-file-text 
+				%span Description
+		%li
+			= link_to '#video' do 
+				%i.fa.fa-video-camera 
+				%span Video
+		%li
+			= link_to '#budget' do 
+				%i.fa.fa-money 
+				%span Budget
+		%li
+			= link_to '#project_card' do 
+				%i.fa.fa-sticky-note-o 
+				%span Project Card
+		%li
+			= link_to '#rewards' do 
+				%i.fa.fa-gift 
+				%span Rewards
+		
+		- if !@project.draft?
+			%li
+				= link_to '#account' do 
+					%i.fa.fa-user
+					%span Account
+		
+		- if @project.draft?
+			%li.separate
+			%li
+				= link_to send_to_analysis_project_path(@project), data:{confirm:'Are you sure?'} do 
+					%i.fa.fa-share-square-o
+					%span Send
+		
+		- if @project.approved?
+			%li.separate
+			%li
+				= link_to publish_project_path(@project), data:{confirm:'Are you sure?'} do 
+					%i.fa.fa-paper-plane
+					%span Publish
+		
+		- unless @project.draft?
+			%li.separate
+			%li
+				= link_to project_path(@project, preview:true) do 
+					%i.fa.fa-eye
+					%span Preview
+		%li.separate
+		%li
+			%a.toggle-nav-collapse{href:'javascript:void(0)'}
+				%i.fa.fa-angle-left
