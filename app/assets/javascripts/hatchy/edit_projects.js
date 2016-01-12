@@ -5,6 +5,7 @@ var edit_projects = (function(){
   var $toggleNav = $('.toggle-nav-collapse'); 
   var $sidebarPage = $('.sidebar-page'); 
   var $menuLinks = $('#project_menu li a');
+  var $rewardForm = $('form');
   var $hashLink = $.grep( $( '#project_menu li a' ), function (o) {
     return o.hash === window.location.hash;
   });
@@ -12,6 +13,8 @@ var edit_projects = (function(){
   // Bind Events
   $toggleNav.on('click', toggleNavCss);
   $menuLinks.not('.toggle-nav-collapse').on('click', toggleMenuActive);
+  $rewardForm.on('click', '.add_fields', addFields);
+  $rewardForm.on('click', '.remove_fields', removeFields);
   
   // Functions
   function showHashLocation() {
@@ -29,6 +32,19 @@ var edit_projects = (function(){
     $rowSections.addClass('hidden');
     $(this).parent().addClass('active');
     $('.container-fluid' + this.hash + '_dashboard').removeClass('hidden');
+  }
+
+  function addFields() {
+    var time = new Date().getTime();
+    var regexp = new RegExp($(this).data('id'), 'g');
+    $(this).before($(this).data('fields').replace(regexp, time));
+  }
+
+  function removeFields() {
+    if(confirm("Are You Sure?")){
+      $(this).prev('input[type=hidden]').val('1');
+      $(this).closest('fieldset').hide();
+    }
   }
 
   function initSummerNote() {

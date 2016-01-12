@@ -1,0 +1,16 @@
+.container-fluid.hidden#budget_dashboard
+  .row
+    .text-center
+      %h1 Budget
+      %h4 Show steps and processes are involved in the use of these resources. A list of the main items of the budget or even a pie chart will very well here.
+  .row
+    %hr
+    .col-md-12
+      = form_for @project, html:{class: "form-horizontal"} do |f|
+        = form_group_for f, :budget do
+          .col-sm-8
+            = f.text_area :budget, class: "summernote"
+        .form-group
+          .col-sm-offset-2.col-sm-10
+            = hidden_field_tag 'anchor', 'budget'
+            = f.submit "Save Project" , class: 'btn btn-success'

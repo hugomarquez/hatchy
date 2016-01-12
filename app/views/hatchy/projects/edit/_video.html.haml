@@ -1,0 +1,17 @@
+.container-fluid.hidden#video_dashboard
+  .row
+    .text-center
+      %h1 Video
+      %h4 A good video makes the difference and can be largely responsible for the success of your project.
+  .row
+    %hr
+    .col-md-12
+      = form_for @project, html:{class: "form-horizontal"} do |f|
+        = form_group_for f, :video do
+          .col-sm-5
+            = f.url_field :video_url, class: "form-control"
+            %p.small Youtube or Vimeo videos!
+        .form-group
+          .col-sm-offset-2.col-sm-10
+            = hidden_field_tag 'anchor', 'video'
+            = f.submit "Save Project" , class: 'btn btn-success'

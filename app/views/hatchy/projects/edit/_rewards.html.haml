@@ -1,0 +1,16 @@
+.container-fluid.hidden#rewards_dashboard
+  .row
+    .text-center
+      %h1 Create and edit your rewards here
+      %h4 This is your show of gratitude to the supporters.
+  .row
+    %hr
+    .col-md-12.col-md-offset-3
+      = form_for @project, html:{id:"rewards_form",class: "form-horizontal"} do |f|
+        = f.fields_for :rewards do |r|
+          = render 'reward_fields', f: r
+        = link_to_add_fields "+ Add Reward", f, :rewards
+        .form-group
+          .col-sm-offset-2.col-sm-10
+            = hidden_field_tag 'anchor', 'rewards'
+            = f.submit "Save Project" , class: 'btn btn-success'

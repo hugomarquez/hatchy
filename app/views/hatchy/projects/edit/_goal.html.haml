@@ -1,0 +1,25 @@
+.container-fluid.hidden#goal_dashboard
+  .row
+    .text-center
+      %h1 Goal and deadline
+      %h4 This information can not be changed if the project goes live.
+  .row
+    %hr
+    .col-md-12
+      = form_for @project, html:{class: "form-horizontal"} do |f|
+        = form_group_for f, :goal do
+          .col-sm-5
+            .input-group
+              .input-group-addon $
+              = f.number_field :goal, class: "form-control", min:0.0, step:50, disabled: form_disabled(f, :goal)
+            %p.small Plan a consistent goal with what your project is proposing. Review your budget and do not forget to include the rate of 13% charged by Catharsis if your project is successful.
+        = form_group_for f, :deadline do
+          .col-sm-5
+            .input-group
+              = f.number_field :online_days, class: "form-control", min:1, max:60, disabled: form_disabled(f, :online_days)
+              .input-group-addon Days
+            %p.small You can choose between 1 and 60 days for his campaign. Check out the guide of directors for tips on deadlines.
+        .form-group
+          .col-sm-offset-2.col-sm-10
+            = hidden_field_tag 'anchor', 'goal'
+            = f.submit "Save Project" , class: 'btn btn-success'

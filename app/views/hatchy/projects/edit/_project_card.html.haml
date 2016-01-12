@@ -1,0 +1,24 @@
+.container-fluid.hidden#project_card_dashboard
+  .row
+    .text-center
+      %h1 Project Card Design
+      %h4 You know that the project's card that appears on the home and the search?
+  .row
+    %hr
+    .col-md-12
+      = form_for @project, html:{class: "form-horizontal"} do |f|
+        .col-md-7
+          = form_group_for f, :uploaded_image do
+            .col-sm-8
+              = f.file_field :project_img, class: "form-control"
+              %p.small This image will be used as the thumbnail of your project (PNG, JPG size 600 x 340)
+          = form_group_for f, :headline do
+            .col-sm-8
+              = f.text_area :headline, class: "form-control", rows:3
+              %p.small phrase in the project card to call supporters. Must have no more than 100 characters, well summarize the project.
+        .col-md-4
+          = render "hatchy/shared/project", project: @project
+        .form-group
+          .col-sm-offset-4.col-sm-10
+            = hidden_field_tag 'anchor', 'project_card'
+            = f.submit "Save Project" , class: 'btn btn-success'

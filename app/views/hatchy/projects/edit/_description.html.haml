@@ -1,0 +1,18 @@
+.container-fluid.hidden#description_dashboard
+  .row
+    .text-center
+      %h1 Tell the story!
+      %h4 Think in the project description.
+  .row
+    %hr
+    .col-md-12
+      = form_for @project, html:{class: "form-horizontal"} do |f|
+        = form_group_for f, :about do
+          .col-sm-8
+            %p.small Speak with passion and clarity about what will be done. Possible answers about how the money will be used, who is behind the project, as and when the project will be delivered. Transparency attracts more supporters. Remember, your project will be accessed by ordinary people who decide whether or not to support your project.
+            %br
+            = f.text_area :about, class: "summernote"
+        .form-group
+          .col-sm-offset-2.col-sm-10
+            = hidden_field_tag 'anchor', 'description'
+            = f.submit "Save Project" , class: 'btn btn-success'
