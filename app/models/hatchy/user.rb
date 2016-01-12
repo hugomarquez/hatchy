@@ -17,7 +17,7 @@ module Hatchy
 
     validates :email, presence: true, uniqueness: true
 
-    #mount_uploader :profile_img, Hatchy::UserUploader
+    mount_uploader :profile_img, Hatchy::UserUploader
 
     accepts_nested_attributes_for :bank_account, allow_destroy: true
 

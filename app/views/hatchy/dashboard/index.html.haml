@@ -1,0 +1,7 @@
+- content_for :javascripts do 
+	= javascript_include_tag "hatchy/dashboard"
+.row
+	- unless @my_projects.empty?
+		= render "your_projects"
+.row.devise
+	= render "projects_you_support"

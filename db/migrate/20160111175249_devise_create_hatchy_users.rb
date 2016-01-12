@@ -22,6 +22,7 @@ class DeviseCreateHatchyUsers < ActiveRecord::Migration
       t.string      :phone
       t.string      :mobile
       ## Database authenticatable
+      t.boolean  :admin,            null: false, default: false
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
 

@@ -11,7 +11,7 @@ module Hatchy
     accepts_nested_attributes_for :account
   	accepts_nested_attributes_for :rewards, allow_destroy: true
 
-  	#mount_uploader :project_img, Hatchy::ProjectUploader
+  	mount_uploader :project_img, Hatchy::ProjectUploader
   	validates :name, presence: true, uniqueness: true
 
     scope :recommended, -> { where(recommended: true, status:'online') }

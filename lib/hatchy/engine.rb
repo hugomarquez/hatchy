@@ -23,6 +23,7 @@ module Hatchy
       app.config.assets.precompile += %w(
         hatchy/hatchy.js
         hatchy/home.js
+        hatchy/dashboard.js
         hatchy/hatchy.css
         )
     end
