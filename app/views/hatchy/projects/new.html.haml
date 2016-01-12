@@ -1,16 +1,16 @@
 .row
-	%section
-		.container
-			.col-md-12
-				= form_for @project, html:{class: "form-horizontal"} do |f|
-					= form_group_for f, :name do
-						.col-sm-5
-							%p Give a name that people will remember easily. Do not exceed 50 characters.
-							= f.text_field :name, class: "form-control"
-					= form_group_for f, :category do
-						.col-sm-5
-							= f.collection_select(:category_id, Hatchy::Category.order(:name), :id, :name, {}, class:'form-control')
-							%p.small Choose the most appropriate to your project.
-					.form-group
-						.col-sm-offset-2.col-sm-10
-							= f.submit "Save Project" , class: 'btn btn-primary'
+  %section
+    .container
+      .col-md-12
+        = form_for @project, html:{class: "form-horizontal"} do |f|
+          = form_group_for f, :name do
+            .col-sm-5
+              %p Give a name that people will remember easily. Do not exceed 50 characters.
+              = f.text_field :name, class: "form-control"
+          = form_group_for f, :category do
+            .col-sm-5
+              = f.collection_select(:category_id, Hatchy::Category.order(:name), :id, :name, {}, class:'form-control')
+              %p.small Choose the most appropriate to your project.
+          .form-group
+            .col-sm-offset-2.col-sm-10
+              = f.submit "Save Project" , class: 'btn btn-primary'

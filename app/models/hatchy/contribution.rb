@@ -1,10 +1,10 @@
 module Hatchy
   class Contribution < ActiveRecord::Base  
     attr_accessor :card_number, :card_verification
-    belongs_to	:user, 		class_name:'Hatchy::User'
-    belongs_to	:reward,	class_name:'Hatchy::Reward'
-    belongs_to	:project, class_name:'Hatchy::Project'
-    belongs_to	:country, class_name:'Hatchy::Country'
+    belongs_to  :user,    class_name:'Hatchy::User'
+    belongs_to  :reward,  class_name:'Hatchy::Reward'
+    belongs_to  :project, class_name:'Hatchy::Project'
+    belongs_to  :country, class_name:'Hatchy::Country'
     
     validates_presence_of :user, :project, :value, :email, 
       :name, :address_street, :address_number, :address_city, 

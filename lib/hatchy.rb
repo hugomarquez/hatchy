@@ -11,14 +11,14 @@ require "kaminari"
 require "hatchy/engine"
 
 module Hatchy
-	autoload :CountryImporter, 'hatchy/country_importer'
-	
-	class << self
-		def root
+  autoload :CountryImporter, 'hatchy/country_importer'
+  
+  class << self
+    def root
       File.expand_path('../../', __FILE__)
     end
-	end
+  end
 
-	mattr_accessor :theme
-	@@theme = 'default'
+  mattr_accessor :theme
+  @@theme = 'default'
 end

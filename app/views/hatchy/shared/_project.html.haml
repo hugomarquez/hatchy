@@ -1,29 +1,29 @@
 .project-card
-	.header
-		%a{href:"#{project_path(project)}"}
-			= image_tag project.project_img_url.to_s, width:'338', height:'200'
-	.content
-		.title
-			%h4= project.name
-			%p= project.user.full_name
-		.body
-			= project.headline
-	.footer
-		.labels
-			%i.fa.fa-tag
-			%span
-				= project.category.name
-		.status
-			.progress-info
-				%p= "#{project.total_percentage}%"
-			.progress{style:"height:10px;"}
-				.progress-bar.progress-bar-success{"aria-valuenow": "#{project.total_percentage}", "aria-valuemin": "0", "aria-valuemax": "100", style:"width:#{project.total_percentage}%;"}
-		.status-info.col-md-12
-			.col-md-6
-				%span
-					%p
-						Status: 
-						= project.status.capitalize
-			.col-md-6
-				- if project.recommended
-					%p This Project Rocks!
+  .header
+    %a{href:"#{project_path(project)}"}
+      = image_tag project.project_img_url.to_s, width:'338', height:'200'
+  .content
+    .title
+      %h4= project.name
+      %p= project.user.full_name
+    .body
+      = project.headline
+  .footer
+    .labels
+      %i.fa.fa-tag
+      %span
+        = project.category.name
+    .status
+      .progress-info
+        %p= "#{project.total_percentage}%"
+      .progress{style:"height:10px;"}
+        .progress-bar.progress-bar-success{"aria-valuenow": "#{project.total_percentage}", "aria-valuemin": "0", "aria-valuemax": "100", style:"width:#{project.total_percentage}%;"}
+    .status-info.col-md-12
+      .col-md-6
+        %span
+          %p
+            Status: 
+            = project.status.capitalize
+      .col-md-6
+        - if project.recommended
+          %p This Project Rocks!

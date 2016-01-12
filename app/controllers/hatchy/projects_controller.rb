@@ -1,16 +1,16 @@
 module Hatchy
   class ProjectsController < ApplicationController
-  	skip_before_filter :authenticate_user!, only: [:show]
-  	before_action :set_project, only: [:edit, :show, :update, :send_to_analysis, :publish]
+    skip_before_filter :authenticate_user!, only: [:show]
+    before_action :set_project, only: [:edit, :show, :update, :send_to_analysis, :publish]
     after_action :verify_authorized, except:[:show]
     
-  	# GET /projects/new
-  	def new
-  		@project = Hatchy::Project.new(user: current_user)
+    # GET /projects/new
+    def new
+      @project = Hatchy::Project.new(user: current_user)
       authorize @project
-  	end
+    end
 
-  	# GET /projects/:id/edit
+    # GET /projects/:id/edit
     def edit
       authorize @project
       @layout_footer = false
@@ -33,19 +33,19 @@ module Hatchy
     end
 
     # POST /projects
-  	def create
-  		@project = Hatchy::Project.new(project_params)
-  		@project.user = current_user
+    def create
+      @project = Hatchy::Project.new(project_params)
+      @project.user = current_user
       authorize @project
-  		if @project.valid?
-  			@project.save
-  			redirect_to edit_project_path(@project, anchor: 'basic'), notice: "Project saved successfully"
-  		else
-  			render :new
-  		end
-  	end
+      if @project.valid?
+        @project.save
+        redirect_to edit_project_path(@project, anchor: 'basic'), notice: "Project saved successfully"
+      else
+        render :new
+      end
+    end
 
-  	# PATCH /projects/:id
+    # PATCH /projects/:id
     # PUT /projects/:id
     def update
       authorize @project
@@ -89,11 +89,11 @@ module Hatchy
 
     def project_params
       if @project
-    	 params[:project].permit(@project.safe_params)
+       params[:project].permit(@project.safe_params)
       else
         params[:project].permit(:name, :category_id)
       end
-  	end
+    end
 
   end
 end
