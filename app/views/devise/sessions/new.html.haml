@@ -1,0 +1,26 @@
+.row
+  %section
+    .container
+      .col-md-8.col-md-offset-2.well
+        %h2 Sign in
+        .col-md-6
+          = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+            = form_group_for f, :email, label: false do
+              %div.input-group
+                = f.email_field :email, class: 'form-control input-lg', placeholder: 'Email', required: true
+                %span.input-group-addon.fa.fa-user
+            = form_group_for f, :password, label: false do
+              %div.input-group
+                = f.password_field :password, class: 'form-control input-lg', placeholder: 'Password', required:true
+                %span.input-group-addon.fa.fa-key
+            - if devise_mapping.rememberable?
+              %div.form-group
+                = f.check_box :remember_me
+                = f.label :remember_me
+            %div.form-group
+              = f.submit "Sign in", class: 'btn btn-success btn-block btn-lg'
+          = flash_messages layout_flash: false
+          = render "devise/shared/links"
+        .col-md-5
+          %h3 Or Facebook
+          %a.btn.btn-primary.btn-block.btn-lg{href:"#"} Facebook

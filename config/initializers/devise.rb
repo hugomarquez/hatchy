@@ -6,7 +6,7 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` on Rails 4+ applications as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = 'b6fd10db7f8a94554c1dcdd5662026d40b5bdd1ad997232445e370cf74e0c5108bf7d4998fd55110ee3dabebc00187064e508d87201f8804c71ef62a36aad2d4'
+  # config.secret_key = '72cbfbf72e656ad04075c25d2eabe8017a146263a0954394a531a8711464910215c6eb28ed3c0c51546d14fa519fb016f19d4557ffddb7913f56b73b64794377'
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
@@ -99,7 +99,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 10
 
   # Setup a pepper to generate the encrypted password.
-  # config.pepper = '0118fb78017f6b02479796fc4fb227a87da114752d9a660cfa4d900912eda4c00d9c3b4b1df7666e4bcb89625c349ab2b2244c480a16e55f2ca2eb28f3a7c9d3'
+  # config.pepper = 'b465839b566004b4423967d122afe4f77759c31093d627387dd3ccc53cf97b93411d2a4f8faa36cdb73f40593c52be88d2bc6cdc88f7fffc9c82ae70171ddd06'
 
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without
@@ -257,7 +257,8 @@ Devise.setup do |config|
   #     mount MyEngine, at: '/my_engine'
   #
   # The router that invoked `devise_for`, in the example above, would be:
-  # config.router_name = :my_engine
+    config.router_name = :hatchy
+    config.parent_controller = 'Hatchy::ApplicationController'
   #
   # When using OmniAuth, Devise cannot automatically set OmniAuth path,
   # so you need to do it manually. For the users scope, it would be:

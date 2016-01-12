@@ -12,10 +12,10 @@ Hatchy::Engine.routes.draw do
   resources :users, class_name:'Hatchy::User', only:[:show, :edit, :update]
   
   resources :projects, class_name:'Hatchy::Project', except:[:index] do 
-  	member do 
-  		get 'send_to_analysis'
+    member do 
+      get 'send_to_analysis'
       get 'publish'
-  	end
+    end
 
     resources :contributions, class_name:'Hatchy::Contribution', 
       except:[:index], controller:'projects/contributions'
