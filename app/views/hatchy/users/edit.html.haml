@@ -1,0 +1,17 @@
+- content_for :javascripts do 
+  = javascript_include_tag "hatchy/users/edit"
+.row
+  .content-wrapper
+    %section
+      .container
+        .col-md-6.col-md-offset-1
+          %ul.nav.nav-tabs#user_menu
+            %li= link_to "About You", "#{edit_user_path(@user)}#about_you"
+            %li= link_to "Data and Address", '#data_address'
+            %li= link_to "Bank and Credit Cards", '#billing'
+            %li= link_to "Notifications", '#notifications'
+        .col-md-10.col-md-offset-1
+          /= render "hatchy/users/edit/about_you"
+          /= render "hatchy/users/edit/data_and_address"
+          /= render "hatchy/users/edit/banks_and_cards"
+          /= render "hatchy/users/edit/notifications"
