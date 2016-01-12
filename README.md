@@ -7,13 +7,13 @@ Hatchy, is the first open source Rails engine with Crowdfunding features, such a
 * Paypal
 
 ## Installing into a new Rails application
-To get up and running with Hathcy in a new Rails application is simple. Just follow the instructions below.
+To get up and running with Hatchy in a new Rails application is simple. Just follow the instructions below.
 		
 		rails new my_project
 		cd my_project
 		echo "gem 'hatchy', '0.0.1'" >> Gemfile
 		bundle
-		rails generate hatchy:setup
+		rails g hatchy:setup
 		rake db:migrate hatchy:setup
 		rails server
 
