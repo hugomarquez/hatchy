@@ -1,0 +1,60 @@
+.container-fluid.hidden#account_dashboard
+  .row
+    .text-center
+      %h1 Registration and banking data
+      .col-sm-8.col-sm-offset-2
+        %h4 With the form below complete your project will be ready to air. After completing the filling, then click Save. Review. If everything is ok, just press the Publish button and start your campaign!
+  .row
+    %hr
+    .col-sm-8.col-sm-offset-2
+      %h4 Registration and banking data This data will be used for the issuance of our invoice and the transfer of the money, if your project succeed.
+    .col-md-12
+      = form_for @project, html:{class: "form-horizontal"} do |f|
+        = f.fields_for :account do |a|
+          .col-sm-6
+            %h4.text-center Account
+            = form_group_for a, :account_type do 
+              .col-sm-8
+                = a.select(:account_type, options_for_select(['Individuals',['Legal Person']]),{}, class: "form-control", disabled: form_disabled(f,:account_type))
+            = form_group_for a, :owner_name do 
+              .col-sm-8
+                = a.text_field :owner_name, class: "form-control", required:true, disabled: form_disabled(f, :owner_name)
+            = form_group_for a, :email do 
+              .col-sm-8
+                = a.email_field :email, class: "form-control", required:true, disabled: form_disabled(f, :email)
+            = form_group_for a, :phone do
+              .col-sm-8 
+                = a.text_field :phone, class: "form-control", required:true, disabled: form_disabled(f, :phone)
+            = form_group_for a, :owner_document do 
+              .col-sm-8
+                = a.text_field :owner_document, class: "form-control", required:true, disabled: form_disabled(f, :owner_document)
+            = form_group_for a, :bank do 
+              .col-sm-8
+                = a.collection_select :bank_id, Hatchy::Bank.order(:name), :id, :name, {}, class: "form-control", disabled: form_disabled(f, :bank_id)
+            = form_group_for a, :account do 
+              .col-sm-8
+                = a.text_field :account, class: "form-control", required:true, disabled: form_disabled(f, :account)
+            = form_group_for a, :account_digit do 
+              .col-sm-8
+                = a.text_field :account_digit, class: "form-control", required:true, disabled: form_disabled(f, :account_digit)
+          .col-sm-6
+            %h4.text-center Address
+            = form_group_for a, :address_street do 
+              .col-sm-8
+                = a.text_field :address_street, class: "form-control", required:true, disabled: form_disabled(f, :address_street)
+            = form_group_for a, :address_city do 
+              .col-sm-8
+                = a.text_field :address_city, class: "form-control", required:true, disabled: form_disabled(f, :address_city)
+            = form_group_for a, :address_state do 
+              .col-sm-8
+                = a.text_field :address_state, class: "form-control", required:true, disabled: form_disabled(f, :address_state)
+            = form_group_for a, :address_number do 
+              .col-sm-8
+                = a.text_field :address_number, class: "form-control", required:true, disabled: form_disabled(f, :address_number)
+            = form_group_for a, :address_zip do 
+              .col-sm-8
+                = a.text_field :address_zip, class: "form-control", required:true, disabled: form_disabled(f, :address_zip)
+        .form-group
+          .col-sm-offset-5.col-sm-10
+            = hidden_field_tag 'anchor', 'account'
+            = f.submit "Save Project" , class: 'btn btn-success'
