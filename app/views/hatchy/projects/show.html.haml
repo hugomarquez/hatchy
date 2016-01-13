@@ -1,7 +1,7 @@
 - content_for :javascripts do 
   = javascript_include_tag "hatchy/projects/show"
 .row
-  %section.padding
+  %section
     .container
       .text-center
         %h1= @project.name
@@ -9,7 +9,7 @@
           %span 
             Created by:
             /%strong= @project.user.full_name
-      %section.padding
+      %section
         .col-md-12
           .col-md-8
             .embed-responsive.embed-responsive-16by9
