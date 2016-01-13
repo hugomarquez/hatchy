@@ -130,20 +130,20 @@ ActiveRecord::Schema.define(version: 20160111181655) do
     t.integer  "category_id"
     t.string   "project_img"
     t.string   "city"
-    t.string   "name",                                                     null: false
+    t.string   "name",             limit: 50,                                         null: false
     t.string   "headline"
     t.string   "about"
     t.string   "budget"
     t.string   "video_url"
     t.string   "short_url"
-    t.decimal  "goal",             precision: 8, scale: 2
+    t.decimal  "goal",                        precision: 8, scale: 2
     t.integer  "online_days"
     t.datetime "online_date"
     t.datetime "expires_at"
     t.datetime "rejected_at"
     t.datetime "send_to_draft_at"
-    t.string   "status",                                                   null: false
-    t.boolean  "recommended",                              default: false, null: false
+    t.string   "status",                                                              null: false
+    t.boolean  "recommended",                                         default: false, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

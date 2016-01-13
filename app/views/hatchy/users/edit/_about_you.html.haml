@@ -1,0 +1,37 @@
+.container-fluid.hidden#about_you_dashboard
+  .row
+    .col-md-12
+      = form_for @user, html:{class: "form-horizontal"} do |f|
+        = form_group_for f, :first_name do
+          .col-sm-5
+            = f.text_field :first_name, class: "form-control"
+            %p This is the name that users will see on your public profile
+        = form_group_for f, :last_name do
+          .col-sm-5
+            = f.text_field :last_name, class: "form-control"
+            %p This is the name that users will see on your public profile
+        = form_group_for f, :profile_image do
+          .col-sm-5
+            = image_tag @user.profile_img_url.to_s, width:70 if @user.profile_img
+            = f.file_field :profile_img, class: "form-control"
+            %p This image will be used as the thumbnail of your profile (PNG, JPG size 280 x 280)
+        = form_group_for f, :cover_image do
+          .col-sm-5
+            = f.file_field :cover_img, class: "form-control"
+            %p This image will be used as the background of the header of your public profile (PNG or JPG). If you do not send any image here, will use his profile picture instead.
+        = form_group_for f, :facebook_link do
+          .col-sm-5
+            = f.url_field :facebook_link, class: "form-control"
+            %p Paste the link to your profile
+        = form_group_for f, :twitter_link do
+          .col-sm-5
+            = f.url_field :twitter_link, class: "form-control"
+            %p Paste the link to your profile
+        = form_group_for f, :about do
+          .col-sm-5
+            = f.text_area :about, class: "form-control"
+            %p Paste the link to your profile
+        .form-group
+          .col-sm-offset-2.col-sm-10
+            = hidden_field_tag 'anchor', 'about_you'
+            = f.submit "Save Profile" , class: 'btn btn-primary'

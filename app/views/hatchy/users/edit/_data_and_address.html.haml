@@ -1,0 +1,47 @@
+.container-fluid.hidden#data_address_dashboard
+  = form_for @user, html:{class: "form-horizontal"} do |f|
+    .row
+      = form_group_for f, :email do
+        .col-sm-8
+          %p Keep this updated email because it is the channel of communication between you, the catharsis of the staff and the staff of the projects that you supported.
+          = f.email_field :email, class: "form-control", disabled:true
+      = form_group_for f, :document do
+        .col-sm-8
+          = f.text_field :document, class: "form-control"
+    .row
+      %hr
+      .col-sm-11
+        %h4.text-center Address
+        %p This is the address that was told to make his last support. If you change address, change here and if you wait some reward, let by email to the director of the supported project.
+        %br
+    .row
+      .col-md-6
+        = form_group_for f, :country do
+          .col-sm-8
+            = f.collection_select :country_id, Hatchy::Country.order(:name), :id, :name,{},class: "form-control"
+        = form_group_for f, :address_state do
+          .col-sm-8
+            = f.text_field :address_state, class: "form-control"
+        = form_group_for f, :address_city do
+          .col-sm-8
+            = f.text_field :address_city, class: "form-control"
+        = form_group_for f, :address_street do
+          .col-sm-8
+            = f.text_field :address_street, class: "form-control"
+      .col-md-6
+        = form_group_for f, :address_zip do
+          .col-sm-8
+            = f.text_field :address_zip, class: "form-control"
+        = form_group_for f, :address_number do
+          .col-sm-8
+            = f.text_field :address_number, class: "form-control"
+        = form_group_for f, :phone do
+          .col-sm-8
+            = f.text_field :phone, class: "form-control"
+        = form_group_for f, :mobile do
+          .col-sm-8
+            = f.text_field :mobile, class: "form-control"
+    .form-group
+      .col-sm-offset-2.col-sm-10
+        = hidden_field_tag 'anchor', 'data_address'
+        = f.submit "Save Profile" , class: 'btn btn-primary'
