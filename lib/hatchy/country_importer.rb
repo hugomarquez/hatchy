@@ -1,6 +1,6 @@
 module Hatchy
   module CountryImporter
-
+    
     def self.import
       t1 = Thread.new{
         import_countries
@@ -27,6 +27,6 @@ module Hatchy
         country.save
       end
     end
-
+    
   end
 end
