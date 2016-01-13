@@ -1,0 +1,16 @@
+.container-fluid.hidden#notifications_dashboard
+	.col-md-8.col-md-offset-2
+		= form_for @user, html:{class: "form-horizontal"} do |f|
+			= f.label :newsletter, class: 'checkbox' do 
+				.col-sm-8
+					= f.check_box :newsletter, class: 'checkbox'
+					Featured projects and posts from our Blog 
+			= f.label :subs_projects, class: 'checkbox' do 
+				.col-sm-8
+					= f.check_box :subs_projects, class: 'checkbox'
+					Projects that you supported
+			%hr
+			.form-group
+				.col-sm-offset-2.col-sm-10
+					= hidden_field_tag 'anchor', 'notifications'
+					= f.submit "Save Profile" , class: 'btn btn-primary'

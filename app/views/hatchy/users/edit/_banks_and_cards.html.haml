@@ -1,0 +1,17 @@
+.container-fluid.hidden#billing_dashboard
+  .col-md-12
+    = form_for @user, html:{class: "form-horizontal"} do |f|
+      = f.fields_for :bank_account do |ba|
+        = form_group_for ba, :bank do
+          .col-sm-8
+            = ba.collection_select :bank_id, Hatchy::Bank.order(:name), :id, :name,{}, class: "form-control"
+        = form_group_for ba, :account_digit do
+          .col-sm-8
+            = ba.text_field :account_digit, class: "form-control"
+        = form_group_for ba, :account do
+          .col-sm-8
+            = ba.text_field :account, class: "form-control"
+      .form-group
+        .col-sm-offset-2.col-sm-10
+          = hidden_field_tag 'anchor', 'billing'
+          = f.submit "Save Profile" , class: 'btn btn-primary'
