@@ -1,0 +1,29 @@
+- content_for :javascripts do 
+  = javascript_include_tag "hatchy/home"
+.row
+  %section
+    .container
+      - unless @categories.empty?
+        .btn-group.btn-group-lg
+          - @categories.each do |cat|
+            = content_tag :a, href:"?category_id=#{cat.id}", class: "btn btn-success" do 
+              = cat.name
+              %span.badge= cat.total_projects
+      %hr
+      .projects-content
+        - if !@category_id.blank?
+          .row
+            .pull-right
+              - if current_user
+                -if current_user.categories.where(id: @category_id).any?
+                  = link_to "Unfollow", unsubscribe_category_path(@category_id), class: 'btn btn-success'
+                -else
+                  = link_to "Follow", subscribe_category_path(@category_id), class: "btn btn-success"
+              -else
+                = link_to "Follow", subscribe_category_path(@category_id), class: "btn btn-success"
+
+        .row
+          .owl-carousel#owl-projects
+            - @projects.each do |project|
+              .items
+                = render "hatchy/shared/project", project: project
