@@ -1,0 +1,22 @@
+= form_for [:admin, resource], html:{class:'form-horizontal'} do |f|
+  - resource.attributes.keys.each do |k|
+    - if k != "id" && k != "created_at" && k != "updated_at"
+      = form_group_for f, k.to_sym do
+        .col-sm-8
+          - type = resource.column_for_attribute(k.to_sym).type
+          - case type
+          - when :text
+            = f.text_area k.to_sym, class: 'form-control'
+          - when :string
+            = f.text_field k.to_sym, class: 'form-control'
+          - when :datetime
+            = f.datetime_select k.to_sym,{discard_year:true, discard_seconds:true, minute_step:15, ampm: true},{class: 'form-control', style:"width:auto; display:inline;"}
+          - when :integer
+            = f.number_field k.to_sym, class: 'form-control'
+          - when :boolean
+            = f.label k.to_sym, class: 'checkbox' do 
+              .col-sm-8
+                = f.check_box k.to_sym, class: 'checkbox'
+  .form-group
+    .col-sm-offset-2.col-sm-10
+      = f.submit "Submit", class: 'btn btn-primary'

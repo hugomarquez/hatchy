@@ -1,0 +1,31 @@
+- if resources.present?
+  %table.table.table-condensed.table-striped.data-table
+    %thead
+      %tr
+        - resources.first.attributes.keys.each do |key|
+          %th= key.humanize
+        %th Controls
+    %tbody
+      - resources.each do |r|
+        - model_path = r.class.model_name.plural.gsub(/hatchy_/, "")
+        %tr
+          - r.attributes.each do |k, v|
+            - type = r.column_for_attribute(k.to_sym).type
+            - if k == "id"
+              %td= v
+            - elsif type == :datetime
+              %td= v.present? ? v.strftime("%m/%d/%Y - %l:%M%p") : " "
+            - elsif type == :boolean
+              %td= check_box_tag 'eu_member', v, v, disabled: true
+            - else
+              %td= v
+          %td
+            %ul.inline.list-inline
+              %li.pull-right{title:'delete', rel:'tooltip'}
+                = link_to "#{model_path}/#{r.id}", method: :delete, data:{confirm:"Are you sure?"} do 
+                  %i.fa.fa-lg.fa-times
+                  %span{style:'display:none;'}delete
+              %li.pull-right{title:'info', rel:'tooltip'}
+                = link_to "#{model_path}/#{r.id}" do 
+                  %i.fa.fa-lg.fa-info-circle
+                  %span{style:'display:none;'}info

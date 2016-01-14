@@ -1,0 +1,10 @@
+- if resource.present?
+  %table.table.table-condensed.table-striped
+    - resource.attributes.each do |k,v|
+      - type = resource.column_for_attribute(k.to_sym).type
+      %tr
+        %th= k.humanize
+        -if type == :datetime
+          %td= v.blank? ? "" : v.strftime("%m/%d/%Y - %l:%M%p")
+        -else
+          %td= v

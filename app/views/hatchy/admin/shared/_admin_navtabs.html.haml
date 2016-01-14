@@ -1,0 +1,17 @@
+%ul.nav.nav-tabs
+  
+  %li{class: "#{current_page?(list_view) ? 'active' : ''}" }
+    = link_to list_view do 
+      %i.fa.fa-list
+      %span Index
+  - if new_view.present? && !new_view.blank?
+    %li{class: "#{current_page?(new_view) ? 'active' : ''}" }
+      = link_to new_view do 
+        %i.fa.fa-plus
+        %span Add New
+
+  - if controller.action_name == "show" || controller.action_name == "edit"
+    %li{class: "#{current_page?(edit_path) ? 'active' : ''}" }
+      = link_to edit_path do 
+        %i.fa.fa-pencil
+        %span Edit
