@@ -1,0 +1,7 @@
+= form_for [@project, @contribution], html:{class: "form-horizontal", novalidate:true} do |f|
+	.row#reward_data
+		= render "hatchy/projects/contributions/rewards", f: f
+	.row#billing_data.hidden
+		= render "hatchy/projects/contributions/billing", f: f
+	.row#payment_data.hidden
+		= render "hatchy/projects/contributions/payment", f: f

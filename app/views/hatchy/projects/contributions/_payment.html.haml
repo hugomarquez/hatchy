@@ -1,0 +1,18 @@
+%h2 Complete and review the data for payment
+%p These data will be reported to the project owner
+.col-md-8
+	= form_group_for f, :card_type do
+		.col-sm-3
+			= f.select :card_type,["Visa", "Mastercard", "Discover", "American Express"],{}, class: 'form-control'
+	= form_group_for f, :card_number do
+		.col-sm-8
+			= f.text_field :card_number, class: 'form-control'
+	= form_group_for f, :card_verification do
+		.col-sm-8
+			= f.text_field :card_verification, class: 'form-control'
+	= form_group_for f, :card_expires_on do
+		.col-sm-8
+			= f.date_select :card_expires_on,{discard_day:true, start_year: Date.today.year, end_year: Date.today.year + 10, add_month_numbers: true},{class: "form-control", style:"width:auto; display:inline;"}
+	.form-group
+		.col-sm-offset-2.col-sm-10
+			= f.submit "Save" , class: 'btn btn-success btn-lg'

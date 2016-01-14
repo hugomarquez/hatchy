@@ -1,0 +1,40 @@
+%h2 Complete and review the data for payment
+%p These data will be reported to the project owner
+.col-md-8
+	= form_group_for f, :name do
+		.col-sm-8
+			= f.text_field :name, value:"#{@user.first_name} #{@user.last_name}", class: 'form-control'
+	= form_group_for f, :email do
+		.col-sm-8
+			= f.email_field :email, value: @user.email, class: 'form-control'
+	= form_group_for f, :document do
+		.col-sm-8
+			= f.text_field :document, value: @user.document, class: 'form-control'
+	.form-group
+		.col-sm-8.col-sm-offset-2
+			= f.check_box :anonymous
+			= f.label :anonymous
+
+	= form_group_for f, :country do
+		.col-sm-8
+			= f.collection_select :country_id, @countries, :id, :name,{selected: "#{@user.country.id if @user.country.present?}"}, class: "form-control"
+	= form_group_for f, :address_state do
+		.col-sm-8
+			= f.text_field :address_state, value: @user.address_state, class: "form-control", required: true
+	= form_group_for f, :address_city do
+		.col-sm-8
+			= f.text_field :address_city, value: @user.address_city, class: "form-control", required: true
+	= form_group_for f, :address_street do
+		.col-sm-8
+			= f.text_field :address_street, value: @user.address_street, class: "form-control", required: true
+	= form_group_for f, :address_zip do
+		.col-sm-8
+			= f.text_field :address_zip, value: @user.address_zip, class: "form-control", required: true
+	= form_group_for f, :address_number do
+		.col-sm-8
+			= f.text_field :address_number, value: @user.address_number, class: "form-control", required: true
+	= form_group_for f, :address_phone do
+		.col-sm-8
+			= f.text_field :address_phone, value: @user.phone, class: "form-control", required: true
+	.col-sm-8.col-sm-offset-2
+		= link_to 'Continue', '#payment', id:'billing_continue', class: 'btn btn-primary btn-lg'
