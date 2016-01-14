@@ -1,0 +1,10 @@
+.content-wrapper
+  .container-fluid
+    .row
+      .text-center
+        %h1 New Announcement
+      %hr
+    .row
+      .col-md-12
+        = render 'hatchy/admin/shared/admin_navtabs', list_view: admin_announcements_path, new_view: new_admin_announcement_path
+        = render 'hatchy/admin/shared/model_form', resource: @announcement
