@@ -1,0 +1,10 @@
+.content-wrapper
+  .container-fluid
+    .row
+      .text-center
+        %h1= @country.name
+      %hr
+    .row
+      .col-md-12
+        = render 'hatchy/admin/shared/admin_navtabs', list_view: admin_countries_path, new_view: new_admin_country_path, edit_path: edit_admin_country_path
+        = render 'hatchy/admin/shared/model_form', resource: @country
