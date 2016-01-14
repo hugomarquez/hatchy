@@ -1,0 +1,13 @@
+.content-wrapper
+  .container-fluid
+    .row
+      .text-center
+        %h1= @category.name
+      %hr
+    .row
+      .col-md-12
+        = render 'hatchy/admin/shared/admin_navtabs', list_view: admin_categories_path, new_view: new_admin_category_path, edit_path: edit_admin_category_path
+        = render 'hatchy/admin/shared/model_show', resource: @category
+        %hr
+        .col-sm-offset-2.col-sm-10
+          =link_to "Delete", admin_category_path(@category), method: :delete, data:{confirm: "Are you sure?"}, class:'btn btn-danger btn-lg'
