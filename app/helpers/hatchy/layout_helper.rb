@@ -32,4 +32,12 @@ module Hatchy::LayoutHelper
     end
   end
 
+  def get_indicator(percent)
+    return '' if percent < 0          # none
+    return 'info' if percent < 34     # < 1/100 of max
+    return 'success' if percent < 67  # < 1/10 of max
+    return 'warning' if percent < 84  # < 1/3 of max
+    'danger'                          # > 1/3 of max
+  end
+
 end

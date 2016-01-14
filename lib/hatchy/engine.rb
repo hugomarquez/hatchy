@@ -21,6 +21,8 @@ module Hatchy
 
     initializer 'Hatchy precompile hook', group: :all do |app|
       app.config.assets.precompile += %w(
+        hatchy/admin.js
+        hatchy/admin/dashboard.js
         hatchy/hatchy.js
         hatchy/home.js
         hatchy/dashboard.js
@@ -29,6 +31,7 @@ module Hatchy
         hatchy/projects/contributions/new_contribution.js
         hatchy/users/edit.js
         hatchy/hatchy.css
+        hatchy/admin.css
         )
     end
 

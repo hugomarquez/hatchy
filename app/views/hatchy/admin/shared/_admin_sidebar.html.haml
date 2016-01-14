@@ -1,0 +1,38 @@
+.sidebar-wrapper
+  %ul.nav.nav-sidebar#project_menu
+    %li{class: "#{controller.controller_name == 'dashboard' ? 'active' : ''}"}
+      = link_to admin_root_path do 
+        %i.fa.fa-dashboard 
+        %span Dashboard
+    %li{class: "#{controller.controller_name == 'announcements' ? 'active' : ''}"}
+      = link_to admin_announcements_path do 
+        %i.fa.fa-bullhorn
+        %span Announcements
+    %li{class: "#{controller.controller_name == 'banks' ? 'active' : ''}"}
+      = link_to admin_banks_path do 
+        %i.fa.fa-building-o 
+        %span Banks
+    %li{class: "#{controller.controller_name == 'categories' ? 'active' : ''}"}
+      = link_to admin_categories_path do 
+        %i.fa.fa-tags 
+        %span Categories
+    %li{class: "#{controller.controller_name == 'contributions' ? 'active' : ''}"}
+      = link_to admin_contributions_path do 
+        %i.fa.fa-heart 
+        %span Contributions
+    %li{class: "#{controller.controller_name == 'countries' ? 'active' : ''}"}
+      = link_to admin_countries_path do 
+        %i.fa.fa-globe 
+        %span Country
+    %li{class: "#{controller.controller_name == 'projects' ? 'active' : ''}"}
+      = link_to admin_projects_path do 
+        %i.fa.fa-file-text 
+        %span Projects
+    %li{class: "#{controller.controller_name == 'users' ? 'active' : ''}"}
+      = link_to admin_users_path do 
+        %i.fa.fa-users 
+        %span Users
+    %li.separate
+    %li
+      %a.toggle-nav-collapse{href:'javascript:void(0)'}
+        %i.fa.fa-angle-left

@@ -1,0 +1,14 @@
+- content_for :stylesheets do 
+  = stylesheet_link_tag "https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"
+- content_for :javascripts do 
+  = javascript_include_tag "https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"
+.content-wrapper
+  .container-fluid
+    .row
+      .text-center
+        %h1 Dashboard 
+        %h4 Hatchy Administration
+      %hr
+    .row
+      .col-md-12
+        = render 'last_updated_table'

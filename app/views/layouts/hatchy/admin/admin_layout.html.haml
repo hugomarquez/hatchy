@@ -1,0 +1,26 @@
+!!! 5
+%html{lang: I18n.locale}
+  %head
+    %meta{content: "IE=edge", "http-equiv" => "X-UA-Compatible"}
+    %meta{content: "text/html; charset=utf-8", "http-equiv" => "Content-Type"}
+    %meta{content: "NONE,NOARCHIVE", name: "robots"}
+    %meta{content: "initial-scale=1", name: "viewport", "maximum-scale": 1}
+    = csrf_meta_tag
+    = stylesheet_link_tag "hatchy/admin"
+    = yield :stylesheets
+  %body
+    - @nav_type = "navbar-fixed-top"
+    = render "layouts/hatchy/navbar"
+    .container-fluid
+      .row
+        %section.sidebar-page.expanded{style:"overflow:hidden; outline:none;"}
+          = render "hatchy/admin/shared/admin_sidebar"
+          = yield
+    
+    - @announcements = Hatchy::Announcement.current(cookies.signed[:hidden_announcement_ids])
+    = content_tag :div, id: 'announcements', data:{announcements:@announcements.to_json}, class: 'hidden' do 
+      %p Loading announcements
+    = flash_messages if show_layout_flash?
+    = javascript_include_tag "hatchy/admin"
+    = yield :javascripts
+    = javascript_include_tag "hatchy/admin/dashboard"
