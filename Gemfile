@@ -1,7 +1,5 @@
 source "https://rubygems.org"
 
-gem 'jquery-datatables-rails', '~> 3.3.0'
-
 group :test do
   gem "rspec-rails", "3.3.3"
   gem "capybara", "2.5.0"
