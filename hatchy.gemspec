@@ -20,6 +20,7 @@ Gem::Specification.new do |s|
   s.add_dependency "jquery-rails", ">= 3", "< 4.1"
   s.add_dependency "haml", ">= 4.0", "< 5.0"
   s.add_dependency "haml-rails", "0.9.0"
+  s.add_dependency "sass-rails", "~> 4.0"
   s.add_dependency "carrierwave", "0.10.0"
   s.add_dependency "video_info", "2.5.0"
   s.add_dependency "pundit", "1.0.1"
@@ -27,5 +28,4 @@ Gem::Specification.new do |s|
 
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "thin", "1.6.4"
-  s.add_development_dependency "sass-rails", "~> 4.0"
 end
