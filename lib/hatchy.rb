@@ -6,7 +6,6 @@ require "devise"
 require "carrierwave"
 require "video_info"
 require "pundit"
-require "web-console"
 require "kaminari"
 require "hatchy/engine"
 
