@@ -1,0 +1,25 @@
+%table.table.table-condensed.table-striped.data-table
+  %thead
+    %tr
+      %th Project
+      %th User
+      %th Reward
+      %th Anonymous
+      %th Document
+      %th Ip Address
+      %th Card Type
+      %th Value
+      %th Status
+
+  %tbody
+    - contributions.each do |contribution|
+      %tr
+        %td= link_to contribution.project.name, admin_projects_path
+        %td= link_to contribution.user.full_name, admin_users_path
+        %td= link_to contribution.reward.id, "#"
+        %td= check_box "Anonymous", contribution.anonymous, checked: contribution.anonymous, disabled:true
+        %td= contribution.document
+        %td= contribution.ip_address
+        %td= contribution.card_type
+        %td= number_to_currency contribution.value
+        %td= contribution.status

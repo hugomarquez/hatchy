@@ -1,0 +1,54 @@
+%table.table.table-condensed.table-striped
+  %tr
+    %th Admin
+    %td= check_box "Admin", @user.admin, checked: @user.admin, disabled:true
+    %th Email
+    %td= @user.email
+  %tr
+    %th First Name
+    %td= @user.first_name
+    %th Last Name
+    %td= @user.last_name
+  %tr
+    %th Country
+    %td= @user.country.present? ? @user.country.name : "-"
+    %th State
+    %td= @user.address_state
+  %tr
+    %th City
+    %td= @user.address_city
+    %th Zipcode
+    %td= @user.address_zip
+  %tr
+    %th Street
+    %td= @user.address_street
+    %th Number
+    %td= @user.address_number
+  %tr
+    %th Phone
+    %td= @user.phone
+    %th Mobile
+    %td= @user.mobile
+  %tr
+    %th Facebook
+    %td= @user.facebook_link
+    %th Twitter
+    %td= @user.twitter_link
+  %tr
+    %th Created at
+    %td= @user.created_at.strftime("%m/%d/%Y - %l:%M%p")
+    %th Updated at
+    %td= @user.updated_at.strftime("%m/%d/%Y - %l:%M%p")
+  %tr
+    %th Sign In Count
+    %td= @user.sign_in_count
+  %tr
+    %th Current Sign In at
+    %td= @user.current_sign_in_at.strftime("%m/%d/%Y - %l:%M%p")
+    %th Last Sign In at
+    %td= @user.last_sign_in_at.strftime("%m/%d/%Y - %l:%M%p")
+  %tr
+    %th Last Sign In Ip
+    %td= @user.last_sign_in_ip
+    %th Current Sign In Ip
+    %td= @user.current_sign_in_ip

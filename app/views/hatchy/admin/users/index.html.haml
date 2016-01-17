@@ -1,0 +1,24 @@
+.content-wrapper
+  .container-fluid
+    .row
+      .text-center
+        %h1 Users
+      %hr
+    .row
+      .col-md-12
+        = render 'hatchy/admin/shared/admin_navtabs', list_view: admin_users_path, new_view: ""
+        %table.table.table-condensed.table-striped.ajax-data-table{data:{source:admin_users_url(format: :json)}}
+          %thead
+            %tr
+              %th Id
+              %th Admin
+              %th First Name
+              %th Last Name
+              %th Email
+              %th Document
+              %th Phone
+              %th Mobile
+              %th Newsletter
+              %th Signin Count
+              %th Last Signin At
+          %tbody

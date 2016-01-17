@@ -1,0 +1,31 @@
+%table.table.table-condensed.table-striped.data-table
+  %thead
+    %tr
+      %th Name
+      %th Recommended
+      %th Category
+      %th City
+      %th Status
+      %th Goal
+      %th Draft At
+      %th Online Days
+      %th Online Date
+      %th Expires At
+
+  %tbody
+    - projects.each do |project|
+      %tr
+        %td= project.name
+        %td= check_box "recommended", project.recommended, checked: project.recommended, disabled:true
+        %td= link_to project.category.name, admin_category_path(project.category)
+        %td= project.city
+        %td= project.status
+        %td= number_to_currency project.goal
+        %td= project.send_to_draft_at.strftime("%m/%d/%Y - %l:%M%p")
+        %td= project.online_days
+        - if project.online?
+          %td= project.online_date.strftime("%m/%d/%Y - %l:%M%p")
+          %td= project.expires_at.strftime("%m/%d/%Y - %l:%M%p")
+        - else
+          %td -
+          %td -
