@@ -1,0 +1,42 @@
+%table.table.table-condensed.table-striped
+  %tr
+    %th Owner
+    %td= link_to @project.user.full_name, @project.user
+    %th Status
+    %td= @project.status
+  %tr
+    %th Name
+    %td= link_to @project.name, @project
+    %th Category
+    %td= link_to @project.category.name, admin_category_path(@project.category)
+  %tr
+    %th Recommended
+    %td= check_box "recommended", @project.recommended, checked: @project.recommended, disabled:true
+    %th City
+    %td= @project.city
+  %tr
+    %th Video URL
+    %td= link_to @project.video_url, @project.video_url
+    %th Short URL
+    %td= link_to @project.short_url, @project.short_url
+  %tr
+    %th Online Days
+    %td= @project.online_days
+    %th Budget
+    %td= number_to_currency @project.goal
+  - if @project.online?
+    %tr
+      %th Online Date
+      %td= @project.online_date.strftime("%m/%d/%Y - %l:%M%p")
+      %th Expires at
+      %td= @project.expires_at.strftime("%m/%d/%Y - %l:%M%p")
+  -if @project.rejected?
+    %tr
+      %th Rejected at
+      %td= @project.rejected_at.strftime("%m/%d/%Y - %l:%M%p")
+      %th
+      %td
+  - if @project.draft?
+    %tr
+      %th Send to Draft at
+      %td= @project.send_to_draft_at

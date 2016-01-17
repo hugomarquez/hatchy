@@ -1,0 +1,25 @@
+.content-wrapper
+  .container-fluid
+    .row
+      .text-center
+        %h1 Projects
+      %hr
+    .row
+      .col-md-12
+        = render 'hatchy/admin/shared/admin_navtabs', list_view: admin_projects_path, new_view: ""
+        %table.table.table-condensed.table-striped.ajax-data-table{data:{source:admin_projects_url(format: :json)}}
+          %thead
+            %tr
+              %th Id
+              %th Recommended
+              %th Name
+              %th Owner
+              %th Category
+              %th City
+              %th Status
+              %th Goal
+              %th Draft At
+              %th Online Days
+              %th Online Date
+              %th Expires At
+          %tbody

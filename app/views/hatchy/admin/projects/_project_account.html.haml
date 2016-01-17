@@ -1,0 +1,34 @@
+%table.table.table-condensed.table-striped
+  %tr
+    %th Account Type
+    %td= account.account_type
+    %th Bank
+    %td= link_to account.bank.name, admin_bank_path(account.bank)
+  %tr
+    %th Owner Name
+    %td= account.owner_name
+    %th Owner Document
+    %td= account.owner_document
+  %tr
+    %th Email
+    %td= account.email
+    %th Phone
+    %td= account.phone
+  %tr
+    %th Account
+    %td= account.account
+    %th Account Digit
+    %td= account.account_digit
+  %tr
+    %th Address State
+    %td= account.address_state
+    %th Address City
+    %td= account.address_city
+  %tr
+    %th Address Street
+    %td= account.address_street
+    %th Address Number
+    %td= account.address_number
+  %tr
+    %th Address Zip
+    %td= account.address_zip

@@ -1,0 +1,17 @@
+.content-wrapper
+  .container-fluid
+    .row
+      .text-center
+        %h1= @project.name
+      %hr
+    .row
+      .col-md-12
+        = render 'hatchy/admin/shared/admin_navtabs', list_view: admin_projects_path, new_view: "", edit_path: ""
+        %h3 Basic Info
+        = render 'hatchy/admin/projects/basic_info'
+        %h3 Project Account
+        = render 'hatchy/admin/projects/project_account', account: @project.account
+        %hr
+        = render 'hatchy/admin/projects/about'
+        .col-sm-offset-2.col-sm-10
+          =link_to "Delete", admin_projects_path, method: :delete, data:{confirm: "Are you sure?"}, class:'btn btn-danger btn-lg'
