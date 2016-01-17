@@ -147,10 +147,9 @@ module Hatchy::ProjectStates
         account_attributes:[
           :account,       :account_digit,     :account_type,
           :address_city,  :address_number,    :address_state,
-          :address_street,:address_zip,       :agency,
-          :agency_digit,  :bank_id,           :email,
-          :owner_document,:owner_name,        :phone,
-          :project_id
+          :address_street,:address_zip,       :bank_id,           
+          :email,         :owner_document,    :owner_name,
+          :phone,         :project_id
         ]
       ]
     end

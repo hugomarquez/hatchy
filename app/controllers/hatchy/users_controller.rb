@@ -35,7 +35,7 @@ module Hatchy
         :cover_img, :facebook_link, :twitter_link, 
         :other_link, :about,
         bank_account_attributes:
-          [:bank_id, :user_id, :account, :agency, :account_digit, :agency_digit]
+          [:bank_id, :user_id, :account, :account_digit]
       )
     end
 
