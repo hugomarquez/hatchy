@@ -16,9 +16,9 @@ To get up and running with Hatchy in a new Rails application is simple. Just fol
 		
 		rails new my_project
 		cd my_project
-		echo "gem 'hatchy', '0.0.5.pre'" >> Gemfile
+		echo "gem 'hatchy', '0.0.6.pre'" >> Gemfile
 		bundle
-		rails g hatchy:setup
+		rails g hatchy:install
 		rake db:migrate hatchy:setup
 		rails server
 
