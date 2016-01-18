@@ -6,7 +6,11 @@ module Hatchy::ProjectStates
     before_create :send_to_draft
     validate :with_status
     before_save :set_dates, if: lambda { |project| project.online? }
+    after_create :create_empty_reward
 
+    def create_empty_reward
+      self.rewards.create(min_value: 10.0, description: 'No reward contributions')
+    end
     
     def send_to_draft
       self.status = "draft"
