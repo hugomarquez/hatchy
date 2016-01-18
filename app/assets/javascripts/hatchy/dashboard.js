@@ -1,7 +1,7 @@
 var dashboard = (function(){
   // Cache DOM
   var $owl_your_projects = $('#owl-your-projects');
-  var $owl_projects_you_support = $('#owl-projects-you-support')
+  var $owl_contributions = $('#owl-contributions')
 
   // Functions
   function projectsCarousel() {
@@ -11,7 +11,7 @@ var dashboard = (function(){
       items: 3
     });
 
-    $owl_projects_you_support.owlCarousel({
+    $owl_contributions.owlCarousel({
       autoPlay: true,
       stopOnHover: true,
       items: 3

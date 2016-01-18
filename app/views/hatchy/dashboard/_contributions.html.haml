@@ -1,0 +1,10 @@
+%section
+  .container
+    %h2.text-center Your Contributions
+    .section-content
+      .owl-carousel#owl-contributions
+        - @contributions.each do |contribution|
+          = render "hatchy/shared/project", project: contribution.project
+    .section-footer
+      %p.text-center
+        %a.btn.btn-primary.btn-lg.btn-outline{href:"#"} Explore All
