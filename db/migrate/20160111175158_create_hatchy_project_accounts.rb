@@ -15,9 +15,6 @@ class CreateHatchyProjectAccounts < ActiveRecord::Migration
       t.string      :address_city
       t.string      :address_state
       t.string      :address_zip
-      t.timestamp   :send_to_draft_at
-      t.timestamp   :send_to_analysis_at
-      t.timestamp   :send_to_rejected_at
       t.timestamps
     end
     add_index :hatchy_project_accounts, :project_id
