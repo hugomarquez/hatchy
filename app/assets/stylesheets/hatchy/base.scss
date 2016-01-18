@@ -123,7 +123,40 @@
 .project-card .content .body {
   color: #7e7e7e;
 }
-
+/* Small Project Card */
+.project-card-sm {
+  width: 237px;
+  height: 418px;
+  max-height: 418px;
+  border: 1px solid #EFEFEF;
+  border-radius: 6px;
+  overflow: hidden;
+  background: white;
+  text-align: left;
+  font-size: 12px;
+}
+.project-card-sm .header {
+  width: 237px;
+  height: 200px;
+}
+.project-card-sm .content {
+  position: relative;
+  padding-bottom: 0;
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.project-card-sm .footer {
+  padding: 20px;
+  font-weight: 500;
+  color: #7e7e7e;
+}
+.project-card-sm .content .title {
+  font-weight: 300;
+}
+.project-card-sm .content .body {
+  color: #7e7e7e;
+}
 /* Flash errors */
 #flash_notice{
   @extend .alert-info;
