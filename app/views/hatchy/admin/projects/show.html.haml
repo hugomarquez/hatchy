@@ -6,7 +6,11 @@
       %hr
     .row
       .col-md-12
-        = render 'hatchy/admin/shared/admin_navtabs', list_view: admin_projects_path, new_view: "", edit_path: ""
+        %ul.nav.nav-tabs
+          %li{class: "#{current_page?(admin_projects_path) ? 'active' : ''}" }
+            = link_to admin_projects_path do 
+              %i.fa.fa-list
+              %span Index
         %h3 Basic Info
         = render 'hatchy/admin/projects/basic_info'
         %h3 Project Account

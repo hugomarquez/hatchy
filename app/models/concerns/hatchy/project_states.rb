@@ -48,7 +48,7 @@ module Hatchy::ProjectStates
 
     def push_to_trash
       if self.status == "draft" or self.status == "rejected" or self.status == "analysis"
-        self.status = "deleted"
+        self.status = "trash"
       else
         self.errors[:status] << "Project must be in draft, rejected or analysis first to be deleted"
       end

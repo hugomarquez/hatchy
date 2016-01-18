@@ -3,15 +3,28 @@
     %th Owner
     %td= link_to @project.user.full_name, @project.user
     %th Status
-    %td= @project.status
+    %td
+      .dropup
+        %button.btn.btn-default.dropdown-toggle{data:{toggle:"dropdown"}}
+          = @project.status
+          %span.caret
+        %ul.dropdown-menu
+          %li= link_to "send to approved", send_to_approved_admin_project_path, method: :put
+          %li= link_to "push to online", push_to_online_admin_project_path, method: :put
+          %li= link_to "send to rejected", send_to_rejected_admin_project_path, method: :put
+          %li= link_to "send to draft", send_to_draft_admin_project_path, method: :put
+          %li= link_to "push to trash", push_to_trash_admin_project_path, method: :put
   %tr
     %th Name
-    %td= link_to @project.name, @project
+    %td
+      = best_in_place @project, :name, url: admin_project_path
+      = link_to @project do 
+        %i.fa.fa-share-square-o
     %th Category
     %td= link_to @project.category.name, admin_category_path(@project.category)
   %tr
     %th Recommended
-    %td= check_box "recommended", @project.recommended, checked: @project.recommended, disabled:true
+    %td= best_in_place @project, :recommended, as: :checkbox, url: admin_project_path
     %th City
     %td= @project.city
   %tr

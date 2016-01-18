@@ -20,7 +20,7 @@ module Hatchy
 
     # GET /projects/:id
     def show
-      if @project.user == current_user
+      if @project.user == current_user || current_user.admin?
         unless params[:preview]
           redirect_to edit_project_path(@project, anchor:'basic')
         end
