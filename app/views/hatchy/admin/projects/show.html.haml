@@ -13,8 +13,9 @@
               %span Index
         %h3 Basic Info
         = render 'hatchy/admin/projects/basic_info'
-        %h3 Project Account
-        = render 'hatchy/admin/projects/project_account', account: @project.account
+        - if @project.account != nil
+          %h3 Project Account
+          = render 'hatchy/admin/projects/project_account', account: @project.account
         %hr
         = render 'hatchy/admin/projects/about'
         .col-sm-offset-2.col-sm-10
