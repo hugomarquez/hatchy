@@ -1,42 +1,52 @@
 module Hatchy
   class Projects::ContributionsController < ApplicationController
-    before_action :set_resources, only: [:new, :create]
+    before_action :set_project, only:[:new, :edit, :create, :update]
+    before_action :set_contribution, only:[:edit, :update]
 
-    def new 
-      @contribution = Hatchy::Contribution.new(project: @project)
-      empty_reward = Hatchy::Reward.new(min_value: 10.0, description: 'No reward contributions')
-      @rewards = [empty_reward] + @project.rewards.order(:min_value) #Bring remaining rewards from project
+    def new
+      @contribution = @project.contributions.build
+      @rewards = @project.rewards.order(:min_value)
       @selected_reward = @project.rewards.find(params[:reward_id]) if params[:reward_id]
       if @selected_reward.present?
         @contribution.reward = @selected_reward
       end
     end
 
-    def create
-      @contribution = Hatchy::Contribution.new(contribution_params)
-      @contribution.ip_address = request.remote_ip
-      @contribution.user = @user
-      @contribution.project = @project
-      @selected_reward = @project.rewards.find(params[:reward_id]) if params[:reward_id]
-      if @selected_reward.present?
-        @contribution.reward = @selected_reward
-      end
+    def edit
+      @user = current_user
+      @countries = Hatchy::Country.all
+    end
 
+    def create
+      @contribution = @project.contributions.new(contribution_params)
+      @contribution.user = current_user
       if @contribution.valid?
         @contribution.save
-        redirect_to project_path(@project)
-        flash[:notice] = "Contribution created successfully"
+        redirect_to edit_project_contribution_path(@project, @contribution), notice: "Contribution saved successfully"
       else
-        redirect_to new_project_contribution_path
+        redirect_to root_path
         flash[:error] = @contribution.errors.full_messages.to_sentence
       end
     end
 
-    def review
-      current_user.build_bank_account unless current_user.bank_account
+    def update
+      @contribution.ip_address = request.remote_ip
+      if @contribution.update(contribution_params)
+        redirect_to edit_project_contribution_path(@project, @contribution, anchor: params[:anchor]), notice: 'Contribution was successfully updated.'
+      else
+        render :edit
+        flash[:error] = @contribution.errors.full_messages.to_sentence
+      end
     end
 
     private
+    def set_project
+      @project = Hatchy::Project.find(params[:project_id])
+    end
+
+    def set_contribution
+      @contribution = Hatchy::Contribution.find(params[:id])
+    end
     
     def contribution_params
       params[:contribution].permit(
@@ -46,14 +56,8 @@ module Hatchy
         :email,             :name,                :notified_when_finish,
         :project,           :reward_id,           :user,
         :value,             :card_type,           :card_expires_on,
-        :card_number,       :card_verification
+        :card_number,       :card_verification,   :step
       )
-    end
-
-    def set_resources
-      @project = Hatchy::Project.find(params[:project_id])
-      @user = current_user if current_user
-      @countries = Hatchy::Country.order(:name)
     end
 
   end
