@@ -10,7 +10,7 @@
               = cat.name
               %span.badge= cat.total_projects
       %hr
-      .projects-content
+      %section
         - if !@category_id.blank?
           .row
             .pull-right
@@ -26,4 +26,4 @@
           .owl-carousel#owl-projects
             - @projects.each do |project|
               .items
-                = render "hatchy/shared/project", project: project
+                = render "hatchy/shared/small_project", project: project
