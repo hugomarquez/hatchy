@@ -4,5 +4,5 @@
   - unless @my_projects.empty?
     = render "your_projects"
 .row
-  /- unless @supported_projects.empty?
-  /  = render "projects_you_support"
+  - unless @contributions.empty?
+    = render "contributions"
