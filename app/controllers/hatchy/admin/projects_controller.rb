@@ -36,7 +36,7 @@ module Hatchy
       define_method m do 
         set_project
         @project.send("#{m}")
-        if @project.errors.any?
+        if !@project.valid?
           redirect_to admin_project_path(@project)
           flash[:error] = @project.errors.full_messages.to_sentence
         else
