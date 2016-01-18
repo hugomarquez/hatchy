@@ -1,19 +1,22 @@
-%h3 Choose the reward and then the value of support
-.col-xs-12.col-sm-12.col-md-8
-  = f.collection_radio_buttons(:reward_id, @rewards, :id, :description) do |b|
-    .col-xs-12.col-sm-12.col-md-12.reward-select.well
-      .reward-headline
-        %h3= b.label(:class => 'radio-inline') { b.radio_button + "$#{b.object.min_value} or more" }
-      .reward-body.hidden
-        .row
-          .col-xs-8.col-sm-8
-            .col-xs-3.col-sm-3.reward-placeholder-group
-              .reward-placeholder $
-            .col-xs-9.col-sm-9.reward-input-group
-              = f.number_field :value, min:b.object.min_value, value:b.object.min_value, class: "reward-input"
-          .col-xs-4.col-sm-4
-            = link_to 'Continue', "#billing", class: "reward_continue btn btn-primary btn-block btn-lg"
-        .row
-          .col-xs-8.col-sm-8
-            %p.lead= b.object.description
-            %p.text-muted= "Delivery ETA: #{b.object.deliver_at.strftime("%m/%d/%Y")}" if b.object.deliver_at
+.row#reward_data
+  = form_for [@project, @contribution], html:{class: "form-horizontal"} do |f|
+    %h3 Choose the reward and then the value of support
+    .col-xs-12.col-sm-12.col-md-8
+      = f.collection_radio_buttons(:reward_id, @rewards, :id, :description) do |b|
+        .col-xs-12.col-sm-12.col-md-12.reward-select.well
+          .reward-headline
+            %h3= b.label(:class => 'radio-inline') { b.radio_button + "$#{b.object.min_value} or more" }
+          .reward-body.hidden
+            .row
+              .col-xs-8.col-sm-8
+                .col-xs-3.col-sm-3.reward-placeholder-group
+                  .reward-placeholder $
+                .col-xs-9.col-sm-9.reward-input-group
+                  = f.number_field :value, min:b.object.min_value, value:b.object.min_value, class: "reward-input"
+              .col-xs-4.col-sm-4
+                = hidden_field_tag 'anchor', 'reward-select'
+                = f.submit 'Continue', class: "btn btn-primary btn-block btn-lg"
+            .row
+              .col-xs-8.col-sm-8
+                %p.lead= b.object.description
+                %p.text-muted= "Delivery ETA: #{b.object.deliver_at.strftime("%m/%d/%Y")}" if b.object.deliver_at
