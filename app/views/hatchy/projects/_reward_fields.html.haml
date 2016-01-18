@@ -4,10 +4,10 @@
       .col-sm-8
         .input-group
           .input-group-addon $
-          = f.number_field :min_value, class: "form-control", min:0.0, step:50
+          = f.number_field :min_value, class: "form-control", min:10.0
     = form_group_for f, :deliver_at do
       .col-sm-8
-        = f.date_select :deliver_at,{discard_day:true},{class: "form-control", style:"width:auto; display:inline;"}
+        = f.date_select :deliver_at,{discard_day:true, prompt:true},{class: "form-control", style:"width:auto; display:inline;"}
     = form_group_for f, :description do
       .col-sm-8
         = f.text_field :description, class: "form-control"
