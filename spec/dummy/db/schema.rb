@@ -13,7 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20160111181655) do
 
-  create_table "hatchy_announcements", force: true do |t|
+  create_table "hatchy_announcements", force: :cascade do |t|
     t.text     "message",    limit: 80, null: false
     t.datetime "starts_at",             null: false
     t.datetime "ends_at",               null: false
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20160111181655) do
     t.datetime "updated_at"
   end
 
-  create_table "hatchy_bank_accounts", force: true do |t|
+  create_table "hatchy_bank_accounts", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "bank_id"
     t.string   "account",       null: false
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20160111181655) do
 
   add_index "hatchy_bank_accounts", ["user_id", "bank_id"], name: "index_hatchy_bank_accounts_on_user_id_and_bank_id"
 
-  create_table "hatchy_banks", force: true do |t|
+  create_table "hatchy_banks", force: :cascade do |t|
     t.string   "name",       limit: 80, null: false
     t.string   "code",       limit: 10, null: false
     t.datetime "created_at"
@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 20160111181655) do
 
   add_index "hatchy_banks", ["code"], name: "index_hatchy_banks_on_code", unique: true
 
-  create_table "hatchy_categories", force: true do |t|
+  create_table "hatchy_categories", force: :cascade do |t|
     t.string   "name",       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 20160111181655) do
 
   add_index "hatchy_categories", ["name"], name: "index_hatchy_categories_on_name", unique: true
 
-  create_table "hatchy_category_followers", force: true do |t|
+  create_table "hatchy_category_followers", force: :cascade do |t|
     t.integer  "category_id"
     t.integer  "user_id"
     t.datetime "created_at"
@@ -58,25 +58,26 @@ ActiveRecord::Schema.define(version: 20160111181655) do
 
   add_index "hatchy_category_followers", ["user_id", "category_id"], name: "index_hatchy_category_followers_on_user_id_and_category_id"
 
-  create_table "hatchy_contributions", force: true do |t|
+  create_table "hatchy_contributions", force: :cascade do |t|
     t.integer  "project_id"
     t.integer  "user_id"
     t.integer  "reward_id"
     t.integer  "country_id"
     t.decimal  "value",                                null: false
     t.string   "status",                               null: false
-    t.string   "name",                                 null: false
-    t.string   "email",                                null: false
-    t.string   "document",                             null: false
-    t.string   "address_street",                       null: false
-    t.string   "address_number",                       null: false
-    t.string   "address_city",                         null: false
-    t.string   "address_zip",                          null: false
-    t.string   "address_state",                        null: false
-    t.string   "address_phone",                        null: false
+    t.string   "step",                                 null: false
+    t.string   "name"
+    t.string   "email"
+    t.string   "document"
+    t.string   "address_street"
+    t.string   "address_number"
+    t.string   "address_city"
+    t.string   "address_zip"
+    t.string   "address_state"
+    t.string   "address_phone"
     t.string   "ip_address"
-    t.string   "card_type",                            null: false
-    t.date     "card_expires_on",                      null: false
+    t.string   "card_type"
+    t.date     "card_expires_on"
     t.boolean  "anonymous",            default: false
     t.boolean  "notified_when_finish"
     t.datetime "created_at"
@@ -88,7 +89,7 @@ ActiveRecord::Schema.define(version: 20160111181655) do
   add_index "hatchy_contributions", ["reward_id"], name: "index_hatchy_contributions_on_reward_id"
   add_index "hatchy_contributions", ["user_id"], name: "index_hatchy_contributions_on_user_id"
 
-  create_table "hatchy_countries", force: true do |t|
+  create_table "hatchy_countries", force: :cascade do |t|
     t.string   "name"
     t.string   "code2"
     t.string   "code3"
@@ -100,7 +101,7 @@ ActiveRecord::Schema.define(version: 20160111181655) do
     t.datetime "updated_at"
   end
 
-  create_table "hatchy_project_accounts", force: true do |t|
+  create_table "hatchy_project_accounts", force: :cascade do |t|
     t.integer  "project_id"
     t.integer  "bank_id"
     t.string   "account_type"
@@ -115,9 +116,6 @@ ActiveRecord::Schema.define(version: 20160111181655) do
     t.string   "address_city"
     t.string   "address_state"
     t.string   "address_zip"
-    t.datetime "send_to_draft_at"
-    t.datetime "send_to_analysis_at"
-    t.datetime "send_to_rejected_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -125,7 +123,7 @@ ActiveRecord::Schema.define(version: 20160111181655) do
   add_index "hatchy_project_accounts", ["bank_id"], name: "index_hatchy_project_accounts_on_bank_id"
   add_index "hatchy_project_accounts", ["project_id"], name: "index_hatchy_project_accounts_on_project_id"
 
-  create_table "hatchy_projects", force: true do |t|
+  create_table "hatchy_projects", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "category_id"
     t.string   "project_img"
@@ -151,20 +149,20 @@ ActiveRecord::Schema.define(version: 20160111181655) do
   add_index "hatchy_projects", ["category_id"], name: "index_hatchy_projects_on_category_id"
   add_index "hatchy_projects", ["user_id"], name: "index_hatchy_projects_on_user_id"
 
-  create_table "hatchy_rewards", force: true do |t|
+  create_table "hatchy_rewards", force: :cascade do |t|
     t.integer  "project_id"
     t.decimal  "min_value",         null: false
     t.integer  "max_contributions"
     t.string   "description",       null: false
     t.integer  "row_order"
-    t.datetime "deliver_at",        null: false
+    t.datetime "deliver_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "hatchy_rewards", ["project_id"], name: "index_hatchy_rewards_on_project_id"
 
-  create_table "hatchy_users", force: true do |t|
+  create_table "hatchy_users", force: :cascade do |t|
     t.integer  "country_id"
     t.string   "profile_img"
     t.string   "cover_img"
