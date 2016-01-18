@@ -1,0 +1,49 @@
+%table.table.table-condensed.table-striped
+  %tr
+    %th Project
+    %td= link_to @contribution.project.name, admin_project_path(@contribution.project.id)
+    %th Project Owner
+    %td= link_to @contribution.project.user.full_name, admin_user_path(@contribution.project.user.id)
+  %tr
+    %th User
+    %td= link_to @contribution.user.full_name, admin_user_path(@contribution.user.id)
+    %th Email
+    %td= @contribution.user.email
+  %tr
+    %th Country
+    %td= @contribution.country ? @contribution.country.name : "-"
+    %th State
+    %td= @contribution.address_state
+  %tr
+    %th City
+    %td= @contribution.address_city
+    %th Zipcode
+    %td= @contribution.address_zip
+  %tr
+    %th Street
+    %td= @contribution.address_street
+    %th Number
+    %td= @contribution.address_number
+  %tr
+    %th Phone
+    %td= @contribution.address_phone
+    %th Anonymous
+    %td= check_box "Anonymous", @contribution.anonymous, checked: @contribution.anonymous, disabled:true
+  %tr
+    %th Document
+    %td= @contribution.document
+    %th IP Address
+    %td= @contribution.ip_address
+  %tr
+    %th Status
+    %td= @contribution.status
+    %th Step
+    %td= @contribution.step
+  %tr
+    %th Credit Card Type
+    %td= @contribution.card_type
+    %th Credit Card Expiration Date
+    %td= @contribution.card_expires_on.strftime("%m/%y") if @contribution.card_expires_on
+  %tr
+    %th Value
+    %td= number_to_currency @contribution.value

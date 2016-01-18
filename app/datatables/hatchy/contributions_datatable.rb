@@ -20,7 +20,7 @@ module Hatchy
 	  def data
 	  	contributions.map do |contribution|
 	      [
-	      	link_to(contribution.id, "#"),
+	      	link_to(contribution.id, "/admin/contributions/#{contribution.id}"),
 	      	link_to(contribution.project.name, contribution.project),
 	      	link_to(contribution.user.full_name, "/admin/users/#{contribution.user.id}"),
 	      	link_to(contribution.reward.id, "#"),

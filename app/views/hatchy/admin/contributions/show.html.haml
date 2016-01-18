@@ -1,0 +1,21 @@
+.content-wrapper
+  .container-fluid
+    .row
+      .text-center
+        %h1= "Contribution: #{@contribution.project.name}"
+      %hr
+    .row
+      .col-md-12
+        %ul.nav.nav-tabs
+          %li{class: "#{current_page?(admin_contributions_path) ? 'active' : ''}" }
+            = link_to admin_contributions_path do 
+              %i.fa.fa-list
+              %span Index
+        %h3 Basic Info
+        = render 'hatchy/admin/contributions/basic_info'
+        %hr
+        %h3 Reward Info
+        = render 'hatchy/admin/shared/model_show', resource: @contribution.reward
+        %hr
+        .col-sm-offset-2.col-sm-10
+          = link_to "Delete", admin_contribution_path(@contribution), method: :delete, data:{confirm: "Are you sure?"}, class:'btn btn-danger btn-lg'
