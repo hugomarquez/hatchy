@@ -2,7 +2,7 @@ module Hatchy
   class DashboardController < ApplicationController
     def index
       @my_projects = current_user.projects
-      @supported_projects = nil
+      @contributions = current_user.contributions
     end
   end
 end
