@@ -1,19 +1,18 @@
 module Hatchy
   class Contribution < ActiveRecord::Base  
+    include Hatchy::ContributionStates
+    
     attr_accessor :card_number, :card_verification
     belongs_to  :user,    class_name:'Hatchy::User'
     belongs_to  :reward,  class_name:'Hatchy::Reward'
     belongs_to  :project, class_name:'Hatchy::Project'
     belongs_to  :country, class_name:'Hatchy::Country'
     
-    validates_presence_of :user, :project, :value, :email, 
-      :name, :address_street, :address_number, :address_city, 
-      :address_state, :address_zip, :address_phone
-
     validates_numericality_of :value, greater_than_or_equal_to: 10.00
-    validate :validate_card, on: :create
-    validate :reward_is_from_project, :value_greater_equal_than_reward, 
-      :cant_contribute_if_max_contribution
+    validate :reward_is_from_project
+    validate :value_greater_equal_than_reward
+    #validate :cant_contribute_if_max_contribution
+    #validate :validate_card, on: :create
 
     private
 
