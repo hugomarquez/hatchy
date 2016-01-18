@@ -33,11 +33,6 @@ module Hatchy
         hatchy/hatchy.css
         hatchy/admin.css
         )
-    end
-
-    generators do
-      require 'hatchy/setup_generator' 
-    end
-    
+    end    
   end
 end
