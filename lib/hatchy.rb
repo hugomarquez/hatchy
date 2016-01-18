@@ -22,4 +22,11 @@ module Hatchy
 
   mattr_accessor :theme
   @@theme = 'default'
+
+  # Default way to setup Hatchy. Run rails generate hatchy_install to create
+  # a fresh initializer with all configuration values.
+  def self.setup
+  	yield self
+  end
+
 end
