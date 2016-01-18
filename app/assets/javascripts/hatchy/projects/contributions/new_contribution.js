@@ -2,16 +2,10 @@ var new_contribution = (function(){
 	// Cache DOM
 	var $rewards_section = $('.reward-select');
 	var $rewards_row = $('#reward_data');
-	var $billing_row = $('#billing_data');
-	var $payment_row = $('#payment_data');
-	var $reward_continue = $('.reward_continue');
-	var $billing_continue = $('#billing_continue');
 	init();
 
 	// Bind Events
 	$rewards_section.on('click', selectReward);
-	$reward_continue.on('click', renderBilling);
-	$billing_continue.on('click', renderPayment);
 	
 	// Functions
 	function selectReward(event){
@@ -27,16 +21,6 @@ var new_contribution = (function(){
 	function cleanSelection(){
 		$rewards_section.removeClass('selected');
 		$('.reward-body').not('.hidden').addClass('hidden');
-	}
-
-	function renderBilling(event){
-		$rewards_row.addClass('hidden');
-		$billing_row.removeClass('hidden');
-	}
-
-	function renderPayment(event){
-		$billing_row.addClass('hidden');
-		$payment_row.removeClass('hidden');
 	}
 
 	function init(){
