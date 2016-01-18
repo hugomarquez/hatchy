@@ -5,11 +5,13 @@
 //= require 'hatchy/application.js'
 //= require dataTables/jquery.dataTables
 //= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
+//= require best_in_place
 
 var admin = (function(){
   // cache DOM
   var $ajax_data_table = $('.ajax-data-table');
   var $data_table = $('.data-table');
+  var $bestInPlace = $('.best_in_place');
 
   // functions
   function setAjaxDataTable(){
@@ -29,8 +31,13 @@ var admin = (function(){
     });
   }
 
+  function setBestInPlace(){
+    $bestInPlace.best_in_place();
+  }
+
   setDataTable();
   setAjaxDataTable();
+  setBestInPlace();
 
   return{};
 })();

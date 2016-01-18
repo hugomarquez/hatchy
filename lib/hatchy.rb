@@ -8,6 +8,7 @@ require "video_info"
 require "pundit"
 require "kaminari"
 require "jquery-datatables-rails"
+require "best_in_place"
 require "hatchy/engine"
 
 module Hatchy
