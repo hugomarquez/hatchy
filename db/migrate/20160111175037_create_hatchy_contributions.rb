@@ -7,18 +7,19 @@ class CreateHatchyContributions < ActiveRecord::Migration
       t.belongs_to    :country
       t.decimal       :value,             null: false
       t.string        :status,            null: false
-      t.string        :name,              null: false
-      t.string        :email,             null: false
-      t.string        :document,          null: false
-      t.string        :address_street,    null: false
-      t.string        :address_number,    null: false
-      t.string        :address_city,      null: false
-      t.string        :address_zip,       null: false
-      t.string        :address_state,     null: false
-      t.string        :address_phone,     null: false
+      t.string        :step,              null: false
+      t.string        :name
+      t.string        :email
+      t.string        :document
+      t.string        :address_street
+      t.string        :address_number
+      t.string        :address_city
+      t.string        :address_zip
+      t.string        :address_state
+      t.string        :address_phone
       t.string        :ip_address
-      t.string        :card_type,         null: false
-      t.date          :card_expires_on,   null: false
+      t.string        :card_type
+      t.date          :card_expires_on
       t.boolean       :anonymous,         default: false
       t.boolean       :notified_when_finish
       t.timestamps

@@ -6,7 +6,7 @@ class CreateHatchyRewards < ActiveRecord::Migration
       t.integer     :max_contributions
       t.string      :description,       null: false
       t.integer     :row_order
-      t.datetime    :deliver_at,        null: false
+      t.datetime    :deliver_at
       t.timestamps
     end
     add_index :hatchy_rewards, :project_id
