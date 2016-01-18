@@ -1,0 +1,16 @@
+.content-wrapper
+  .container-fluid
+    .row
+      .text-center
+        %h1= @user.first_name
+      %hr
+    .row
+      .col-md-12
+        = render 'hatchy/admin/shared/admin_navtabs', list_view: admin_users_path, new_view: "", edit_path: edit_admin_user_path
+        = form_for [:admin, @user], html:{class:'form-horizontal'} do |f|
+          = form_group_for f, :admin do 
+            .col-sm-5
+              = f.check_box :admin
+          .form-group
+            .col-sm-offset-2.col-sm-10
+              = f.submit class: 'btn btn-primary'

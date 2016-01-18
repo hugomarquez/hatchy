@@ -41,7 +41,7 @@ module Hatchy
     end
 
     def user_params
-      params[:user].permit(:first_name, :last_name)
+      params[:user].permit(:admin)
     end
   end
 end
