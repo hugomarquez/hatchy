@@ -14,4 +14,4 @@ script:
   - cd spec/dummy
   - bundle exec rake hatchy:setup --trace
   - cd ../../
-  - bundle exec rspec spec/
+  - rspec spec/
