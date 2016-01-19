@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :hatchy_bank, :class => 'Hatchy::Bank' do
-    name "Bank"
-    sequence(:code) { |n| "#{n} - #{Random.new_seed}" }
+    sequence(:name) { |n| "bank-#{n}" }
+    sequence(:code) { |n| "code-#{n}" }
   end
 end

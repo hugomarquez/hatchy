@@ -2,7 +2,7 @@ FactoryGirl.define do
   factory :hatchy_project, :class => 'Hatchy::Project' do
     project_img File.open("#{ENGINE_RAILS_ROOT}/spec/support/hatchy/ruby.png")
     city "City"
-    sequence(:name) { |n| "Caspian Star #{n} - #{Random.new_seed}" }
+    sequence(:name) { |n| "#{n}" }
     headline "Headline"
     about "About"
     budget "Budget"
