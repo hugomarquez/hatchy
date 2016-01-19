@@ -1,7 +1,10 @@
 require 'rails_helper'
-
 module Hatchy
   RSpec.describe Country, type: :model do
-    pending "add some examples to (or delete) #{__FILE__}"
+    let(:country){ create(:hatchy_country) }
+    
+    describe "associations" do 
+      it{ is_expected.to have_many :users }
+    end
   end
 end

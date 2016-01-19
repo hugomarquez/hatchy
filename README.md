@@ -1,5 +1,7 @@
 # Hatchy - Crowdfunding Platform
 
+[![Gem Version](https://badge.fury.io/rb/hatchy.svg)](https://badge.fury.io/rb/hatchy)
+
 Hatchy, is the first open source Rails engine with Crowdfunding features, such as:
 * Projects
 * Project's Admin Interface
