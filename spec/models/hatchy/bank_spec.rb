@@ -1,7 +1,7 @@
 require 'rails_helper'
 module Hatchy
   RSpec.describe Bank, type: :model do
-    let(:bank){ create(:bank) }
+    let(:bank){ FactoryGirl.create(:bank) }
 
     describe "validations" do 
       it { should validate_presence_of(:name) }
