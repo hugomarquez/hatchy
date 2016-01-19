@@ -10,5 +10,6 @@ env:
 script:
   - RAILS_ENV=test bundle exec rake db:migrate --trace
   - cd spec/dummy
-  - rake hatchy:setup
+  - bundle exec rake hatchy:setup --trace
+  - cd ../../
   - bundle exec rspec spec/
