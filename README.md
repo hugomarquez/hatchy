@@ -2,6 +2,10 @@
 
 [![Gem Version](https://badge.fury.io/rb/hatchy.svg)](https://badge.fury.io/rb/hatchy)
 
+[![Build Status](https://travis-ci.org/hugomarquez/hatchy.svg?branch=master)](https://travis-ci.org/hugomarquez/hatchy)
+
+[![Coverage Status](https://coveralls.io/repos/github/hugomarquez/hatchy/badge.svg?branch=master)](https://coveralls.io/github/hugomarquez/hatchy?branch=master)
+
 Hatchy, is the first open source Rails engine with Crowdfunding features, such as:
 * Projects
 * Project's Admin Interface
