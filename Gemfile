@@ -11,6 +11,8 @@ group :test do
   gem "shoulda"
   gem 'simplecov'
   gem 'web-console', '~> 2.0'
+  gem 'coveralls'
+  gem 'thin'
 end
 
 gemspec
