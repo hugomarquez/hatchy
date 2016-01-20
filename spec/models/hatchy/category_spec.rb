@@ -30,5 +30,19 @@ module Hatchy
       end
     end
 
+    describe ".with_projects" do 
+      it "Should query all projects not(draft or rejected) that belongs to a category" do 
+        project_acc = FactoryGirl.create(:hatchy_project_account, :without_project)
+        project.category = category
+        project.send_to_analysis
+        project.send_to_approved
+        project.account = project_acc
+        project.save
+        project.push_to_online
+        project.save
+        expect(Hatchy::Category.with_projects).to_not be_empty
+      end
+    end
+
   end
 end

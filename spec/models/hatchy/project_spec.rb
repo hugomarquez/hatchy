@@ -23,5 +23,49 @@ module Hatchy
       end
     end
 
+    describe "#total_contributors" do 
+      it "Should count all contributions without repeating" do 
+        user = FactoryGirl.create(:hatchy_user,:without_bank_data)
+        contribution1 = FactoryGirl.create(:hatchy_contribution,:without_project, :without_user, :without_reward)
+        contribution2 = FactoryGirl.create(:hatchy_contribution,:without_project, :without_user, :without_reward)
+        contribution1.user = user 
+        contribution2.user = user
+        contribution1.project = project
+        contribution2.project = project
+        contribution1.save
+        contribution2.save
+        project.save
+        expect(project.total_contributors).to eq 1
+      end
+    end
+
+    describe "#total_contributions" do 
+      it "Should sum all contributions values that are pending" do 
+        user = FactoryGirl.create(:hatchy_user,:without_bank_data)
+        contribution1 = FactoryGirl.create(:hatchy_contribution,:without_project, :without_user, :without_reward)
+        contribution2 = FactoryGirl.create(:hatchy_contribution,:without_project, :without_user, :without_reward)
+        contribution1.user = user
+        contribution2.user = user
+        contribution1.project = project
+        contribution2.project = project
+        contribution1.save
+        contribution2.save
+        project.save
+        expect(project.total_contributions).to eq 20.0
+      end
+    end
+
+    describe "#total_percentage" do 
+      it "Should calculate the percentage of money collected" do 
+        user = FactoryGirl.create(:hatchy_user,:without_bank_data)
+        contribution1 = FactoryGirl.create(:hatchy_contribution,:without_project, :without_user, :without_reward)
+        contribution1.user = user
+        contribution1.project = project
+        contribution1.save
+        project.save
+        expect(project.total_percentage).to eq ((contribution1.value/project.goal) * 100 ).to_f
+      end
+    end
+
   end
 end

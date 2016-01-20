@@ -21,6 +21,18 @@ FactoryGirl.define do
   	card_expires_on Time.now
   	anonymous false
   	notified_when_finish true
-  end
 
+    trait :without_project do
+      project { nil }
+    end
+
+    trait :without_user do 
+      user { nil }
+    end
+
+    trait :without_reward do 
+      reward { nil }
+    end
+
+  end
 end
