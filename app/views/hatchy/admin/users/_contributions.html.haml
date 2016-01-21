@@ -4,22 +4,24 @@
       %th Project
       %th User
       %th Reward
-      %th Anonymous
-      %th Document
-      %th Ip Address
-      %th Card Type
       %th Value
       %th Status
+      %th Step
+      %th Document
+      %th IP Address
+      %th Card Type
+      %th Anonymous
 
   %tbody
     - contributions.each do |contribution|
       %tr
         %td= link_to contribution.project.name, admin_projects_path
         %td= link_to contribution.user.full_name, admin_users_path
-        %td= link_to contribution.reward.id, "#"
-        %td= check_box "Anonymous", contribution.anonymous, checked: contribution.anonymous, disabled:true
+        %td= number_to_currency contribution.reward.min_value
+        %td= number_to_currency contribution.value
+        %td= contribution.status
+        %td= contribution.step.humanize if contribution.step
         %td= contribution.document
         %td= contribution.ip_address
         %td= contribution.card_type
-        %td= number_to_currency contribution.value
-        %td= contribution.status
+        %td= check_box "Anonymous", contribution.anonymous, checked: contribution.anonymous, disabled:true

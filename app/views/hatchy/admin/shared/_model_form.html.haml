@@ -20,3 +20,7 @@
   .form-group
     .col-sm-offset-2.col-sm-10
       = f.submit "Submit", class: 'btn btn-primary'
+      - if controller.action_name == "edit"
+        = link_to 'Back', Hatchy::Engine.routes.url_helpers.send("admin_#{resource.class.to_s.gsub(/Hatchy::/,'').downcase}_path", resource), class: 'btn btn-default'
+      - elsif controller.action_name == "new"
+        = link_to 'Back', Hatchy::Engine.routes.url_helpers.send("admin_#{resource.class.to_s.gsub(/Hatchy::/,'').downcase.pluralize}_path", resource), class: 'btn btn-default'

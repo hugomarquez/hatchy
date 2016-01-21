@@ -1,5 +1,5 @@
 module Hatchy
-  class ProjectsDatatable
+  class ProjectsDatatable < Hatchy::ApplicationDatatable
     delegate :params, :h, :link_to, :check_box, :number_to_currency, to: :@view
 
     def initialize(view)
@@ -20,18 +20,27 @@ module Hatchy
     def data
       projects.map do |project|
         [
-          link_to(project.id, "/admin/projects/#{project.id}"),
+          project.id,
           check_box("Recommended", project.recommended, checked: project.recommended, disabled: true),
-          link_to(project.name, project),
-          link_to(project.user.full_name, project.user),
+          link_to(project.name, project_path(project)),
+          link_to(project.user.full_name, admin_user_path(project.user)),
           project.category.name,
           project.city,
           project.status,
           number_to_currency(project.goal),
-          project.send_to_draft_at.strftime("%m/%d/%Y - %l:%M%p"),
-          project.online_days,
-          project.online? ? project.online_date.strftime("%m/%d/%Y - %l:%M%p") : "-",
-          project.online? ? project.expires_at.strftime("%m/%d/%Y - %l:%M%p") : "-",
+          (
+            content_tag :ul, class:'inline list-inline' do 
+              content_tag :li, title:'info', rel:'tooltip', class:'pull-right' do
+                link_to admin_project_path(project) do 
+                  content_tag :i, class:'fa fa-lg fa-info-circle' do 
+                    content_tag :span, style:'display:none;' do 
+                      "info"
+                    end
+                  end
+                end
+              end
+            end
+            )
         ]
       end
     end
@@ -58,7 +67,7 @@ module Hatchy
     end
 
     def sort_column
-      columns = %w[id name city goal online_days online_date expires_at send_to_draft_at status recommended]
+      columns = %w[id recommended name city goal]
       hash = params[:order]
       columns[hash.flatten[1]["column"].to_i]
     end

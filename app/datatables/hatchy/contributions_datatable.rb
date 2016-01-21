@@ -1,5 +1,5 @@
 module Hatchy
-	class ContributionsDatatable
+	class ContributionsDatatable < Hatchy::ApplicationDatatable
 		delegate :params, :link_to, :check_box, :number_to_currency, to: :@view
 
 		def initialize(view)
@@ -20,15 +20,26 @@ module Hatchy
 	  def data
 	  	contributions.map do |contribution|
 	      [
-	      	link_to(contribution.id, "/admin/contributions/#{contribution.id}"),
-	      	link_to(contribution.project.name, contribution.project),
-	      	link_to(contribution.user.full_name, "/admin/users/#{contribution.user.id}"),
-	      	link_to(contribution.reward.id, "#"),
-	      	check_box("Anonymous", contribution.anonymous, checked: contribution.anonymous, disabled: true),
-	      	contribution.ip_address,
-	      	contribution.card_type,
+	      	contribution.id,
+	      	link_to(contribution.project.name, admin_project_path(contribution.project)),
+	      	link_to(contribution.project.user.full_name, admin_user_path(contribution.project.user)),
+	      	link_to(contribution.user.full_name, admin_user_path(contribution.user)),
+	      	number_to_currency(contribution.reward.min_value),
 	      	number_to_currency(contribution.value),
-	      	contribution.status
+	      	contribution.status,
+	      	(
+	        	content_tag :ul, class:'inline list-inline' do 
+	        		content_tag :li, title:'info', rel:'tooltip', class:'pull-right' do
+	        			link_to admin_contribution_path(contribution) do 
+	        				content_tag :i, class:'fa fa-lg fa-info-circle' do 
+	        					content_tag :span, style:'display:none;' do 
+	        						"info"
+	        					end
+	        				end
+	        			end
+	        		end
+	        	end
+	        	)
 	      ]
 	    end
 	  end
@@ -55,7 +66,7 @@ module Hatchy
 	  end
 
 	  def sort_column
-	    columns = %w[id project user reward anonymous ip_address card_type value status]
+	    columns = %w[id project user reward value status anonymous]
 	    hash = params[:order]
 	    columns[hash.flatten[1]["column"].to_i]
 	  end

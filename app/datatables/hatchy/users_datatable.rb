@@ -1,5 +1,5 @@
 module Hatchy
-	class UsersDatatable
+	class UsersDatatable < Hatchy::ApplicationDatatable
 		delegate :params, :h, :link_to, :check_box, :number_to_currency, to: :@view
 
 		def initialize(view)
@@ -20,17 +20,26 @@ module Hatchy
 	  def data
 	  	users.map do |user|
 	      [
-	      	link_to(user.id, "/admin/users/#{user.id}"),
-	      	check_box("admin", user.admin, checked: user.admin, disabled: true),
+	      	user.id,
 	      	user.first_name,
 	      	user.last_name,
+	      	check_box("admin", user.admin, checked: user.admin, disabled: true),
 	        link_to(user.email, user),
-	        user.document,
 	        user.phone,
 	        user.mobile,
-	        check_box("newsletter", user.newsletter, checked: user.newsletter, disabled: true),
-	        user.sign_in_count,
-	        user.last_sign_in_at.strftime("%m/%d/%Y - %l:%M%p"),
+	        (
+	        	content_tag :ul, class:'inline list-inline' do 
+	        		content_tag :li, title:'info', rel:'tooltip', class:'pull-right' do
+	        			link_to admin_user_path(user) do 
+	        				content_tag :i, class:'fa fa-lg fa-info-circle' do 
+	        					content_tag :span, style:'display:none;' do 
+	        						"info"
+	        					end
+	        				end
+	        			end
+	        		end
+	        	end
+	        	)
 	      ]
 	    end
 	  end
@@ -57,7 +66,7 @@ module Hatchy
 	  end
 
 	  def sort_column
-	    columns = %w[id admin first_name last_name email document phone mobile newsletter sign_in_count last_sign_in_at]
+	    columns = %w[id first_name last_name admin email phone mobile]
 	    hash = params[:order]
 	    columns[hash.flatten[1]["column"].to_i]
 	  end

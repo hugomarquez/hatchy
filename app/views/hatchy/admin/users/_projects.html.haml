@@ -15,7 +15,7 @@
   %tbody
     - projects.each do |project|
       %tr
-        %td= project.name
+        %td= link_to project.name, admin_project_path(project)
         %td= check_box "recommended", project.recommended, checked: project.recommended, disabled:true
         %td= link_to project.category.name, admin_category_path(project.category)
         %td= project.city

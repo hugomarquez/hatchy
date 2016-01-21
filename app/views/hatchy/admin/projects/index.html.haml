@@ -7,7 +7,7 @@
     .row
       .col-md-12
         = render 'hatchy/admin/shared/admin_navtabs', list_view: admin_projects_path, new_view: ""
-        %table.table.table-condensed.table-striped.ajax-data-table{data:{source:admin_projects_url(format: :json)}}
+        %table.table.table-condensed.table-striped.ajax-data-table{width:'100%', data:{source:admin_projects_url(format: :json)}}
           %thead
             %tr
               %th Id
@@ -18,8 +18,5 @@
               %th City
               %th Status
               %th Goal
-              %th Draft At
-              %th Online Days
-              %th Online Date
-              %th Expires At
+              %th Controls
           %tbody

@@ -1,8 +1,8 @@
 .col-md-7
   %h3 About
-  = @project.about.html_safe
+  = @project.about.html_safe if @project.about
   %hr
   %h3 Budget
-  = @project.budget.html_safe
+  = @project.budget.html_safe if @project.budget
 .col-md-4
   = render "hatchy/shared/project", project: @project

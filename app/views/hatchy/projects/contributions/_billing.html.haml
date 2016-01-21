@@ -8,7 +8,7 @@
 					= f.text_field :name, value:"#{@user.first_name} #{@user.last_name}", class: 'form-control'
 			= form_group_for f, :email do
 				.col-sm-8
-					= f.email_field :email, class: 'form-control'
+					= f.email_field :email, value:"#{@user.email}", class: 'form-control'
 			= form_group_for f, :document do
 				.col-sm-8
 					= f.text_field :document, class: 'form-control'
