@@ -9,11 +9,15 @@
 				= link_to '#basic' do 
 					%i.fa.fa-pencil 
 					%span Basic
-		- if !@project.online?
 			%li
 				= link_to '#goal' do 
 					%i.fa.fa-list-ol 
 					%span Goals
+		-elsif @project.online?
+			%li
+				= link_to '#post' do 
+					%i.fa.fa-envelope
+					%span Posts
 		%li
 			= link_to '#description' do 
 				%i.fa.fa-file-text 

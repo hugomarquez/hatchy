@@ -16,3 +16,5 @@
 				= render "hatchy/projects/edit/account"
 			- if @project.analysis?
 				= render "hatchy/projects/edit/analysis_success"
+			- if @project.online?
+				= render "hatchy/projects/edit/post"

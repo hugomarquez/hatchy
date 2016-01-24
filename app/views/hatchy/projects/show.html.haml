@@ -15,12 +15,20 @@
             .embed-responsive.embed-responsive-16by9
               = @project.video.html_safe
             %hr
-            .col-md-3
-              %p Project Info
-            .col-md-3
-              %p Project Posts
-            .col-md-3
-              %p Comments
+            .col-md-9
+              %ul.nav.nav-tabs
+                %li.active
+                  = link_to root_path do 
+                    %i.fa.fa-list
+                    %span Information
+                %li
+                  = link_to "#posts" do 
+                    %i.fa.fa-list
+                    %span Posts
+                %li
+                  = link_to "#comments" do 
+                    %i.fa.fa-list
+                    %span Comments
             .col-md-12
               %h1= @project.headline
               = @project.about.html_safe
