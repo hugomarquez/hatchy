@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160111181655) do
+ActiveRecord::Schema.define(version: 20160123012002) do
 
   create_table "hatchy_announcements", force: :cascade do |t|
     t.text     "message",    limit: 80, null: false
@@ -122,6 +122,18 @@ ActiveRecord::Schema.define(version: 20160111181655) do
 
   add_index "hatchy_project_accounts", ["bank_id"], name: "index_hatchy_project_accounts_on_bank_id"
   add_index "hatchy_project_accounts", ["project_id"], name: "index_hatchy_project_accounts_on_project_id"
+
+  create_table "hatchy_project_posts", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "project_id"
+    t.boolean  "private"
+    t.text     "title"
+    t.text     "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "hatchy_project_posts", ["user_id", "project_id"], name: "index_hatchy_project_posts_on_user_id_and_project_id"
 
   create_table "hatchy_projects", force: :cascade do |t|
     t.integer  "user_id"
