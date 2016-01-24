@@ -17,6 +17,8 @@ Hatchy::Engine.routes.draw do
       get 'publish'
     end
 
+    resources :posts, class_name:'Hatchy::ProjectPost', 
+      only:[:destroy], controller:'projects/posts'
     resources :contributions, class_name:'Hatchy::Contribution', 
       except:[:index], controller:'projects/contributions'
 
