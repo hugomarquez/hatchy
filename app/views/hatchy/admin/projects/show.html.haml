@@ -17,6 +17,9 @@
           %h3 Project Account
           = render 'hatchy/admin/projects/project_account', account: @project.account
         %hr
+        %h3 Posts
+        = render 'hatchy/admin/projects/posts', posts: @project.posts
+        %hr
         = render 'hatchy/admin/projects/about'
         .col-sm-offset-2.col-sm-10
           =link_to "Delete", admin_projects_path, method: :delete, data:{confirm: "Are you sure?"}, class:'btn btn-danger btn-lg'

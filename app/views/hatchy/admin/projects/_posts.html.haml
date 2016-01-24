@@ -1,0 +1,15 @@
+%table.table.table-condensed.table-striped.data-table
+  %thead
+    %tr
+      %th Id
+      %th Private
+      %th Created at
+      %th Title
+
+  %tbody
+    - posts.order('created_at DESC').each do |post|
+      %tr
+        %td= post.id
+        %td= check_box "Private", post.private, checked: post.private, disabled:true
+        %td= post.created_at.strftime("%m/%d/%Y - %l:%M%p")
+        %td= post.title
