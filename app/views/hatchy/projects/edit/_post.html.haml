@@ -1,0 +1,37 @@
+.container-fluid.hidden#post_dashboard
+  .row
+    .text-center
+      %h1 New Post
+  .row
+    %hr
+    .col-md-12
+      = form_for @project, html:{class: "form-horizontal"} do |f|
+        = f.fields_for :posts, @project.posts.build do |p|
+          = form_group_for p, :title do
+            .col-sm-8
+              = p.text_field :title, class: "form-control"
+          = form_group_for p, :content do
+            .col-sm-8
+              = p.text_area :content, class: "summernote"
+          .form-group
+            .col-sm-8.col-sm-offset-2
+              = p.check_box :private
+              = p.label :private
+        .form-group
+          .col-sm-offset-2.col-sm-10
+            = hidden_field_tag 'anchor', 'post'
+            = f.submit "Save Post" , class: 'btn btn-success'
+  .row
+    %hr
+    .text-center
+      %h2 Old Posts
+    .col-md-12
+      - @project.posts.order('created_at DESC').each do |post|
+        - if post.persisted?
+          .col-sm-8.col-md-offset-2.well
+            .col-md-6
+              %p= post.title
+              %p= "Created at #{post.created_at.strftime("%m/%d/%Y - %l:%M%p")}"
+            .col-md-6
+              .pull-right
+                = link_to "", project_post_path(@project, post), class: 'btn btn-default fa fa-lg fa-trash ', method: :delete, data:{confirm:'Are you sure?'}
