@@ -1,71 +1,35 @@
 - content_for :javascripts do 
   = javascript_include_tag "hatchy/projects/show"
-.row
+
+.row.project-show
   %section
     .container
-      .text-center
-        %h1= @project.name
-        %p.text-muted
-          %span 
-            Created by:
-            /%strong= @project.user.full_name
+      = render "hatchy/projects/show/header"
       %section
         .col-md-12
+          = render "hatchy/projects/show/video"
+          = render "hatchy/projects/show/info"
+        .col-md-12
           .col-md-8
-            .embed-responsive.embed-responsive-16by9
-              = @project.video.html_safe
-            %hr
-            .col-md-9
-              %ul.nav.nav-tabs
-                %li.active
-                  = link_to root_path do 
-                    %i.fa.fa-list
-                    %span Information
-                %li
-                  = link_to "#posts" do 
-                    %i.fa.fa-list
-                    %span Posts
-                %li
-                  = link_to "#comments" do 
-                    %i.fa.fa-list
-                    %span Comments
-            .col-md-12
-              %h1= @project.headline
-              = @project.about.html_safe
-              %hr
-              = @project.budget.html_safe
+            %ul.nav.nav-tabs
+              %li
+                = link_to "#description" do
+                  %i.fa.fa-list
+                  %span Information
+              %li
+                = link_to "#budget" do
+                  %i.fa.fa-list
+                  %span Budget
+              %li
+                = link_to "#posts" do
+                  %i.fa.fa-list
+                  %span Posts
+              %li
+                = link_to "#comments" do
+                  %i.fa.fa-list
+                  %span Comments
+            = render "hatchy/projects/show/description"
+            = render "hatchy/projects/show/budget"
+            = render "hatchy/projects/show/posts"
           .col-md-4
-            .col-md-12
-              %h1 
-                %i.fa.fa-money
-                = number_to_currency @project.total_contributions
-              %p.small= "from #{number_to_currency @project.goal}"
-              %h1
-                %i.fa.fa-user-plus
-                = @project.total_contributors
-              %p.small funders
-              - if @project.online?
-                %h1
-                  %i.fa.fa-clock-o 
-                  #counter{data:{time:@project.expires_at.strftime("%m/%d/%Y %H:%M:%S")}}
-            .col-md-12.well 
-              .col-md-4
-                - if @project.user.profile_img?
-                  = image_tag @project.user.profile_img.to_s, class:'img-circle', width:'60', height:'60'
-              %div
-                /%h4= link_to @project.user.full_name, user_path(@project.user)
-                /%p.small= "#{number_of_projects_created(@project.user)} #{number_of_projects_funded(@project.user)}"
-                = link_to @project.user.facebook_link do 
-                  %i.fa.fa-facebook-official
-                  Facebook 
-                = link_to @project.user.twitter_link do 
-                  %li.fa.fa-twitter
-                  Twitter 
-            - @project.rewards.each do |reward|
-              .col-md-12.well
-                - if @project.online? && !@project.failed?
-                  %h3= link_to reward.min_value, new_project_contribution_path(@project, reward_id: reward.id)
-                -else
-                  %h3= link_to reward.min_value, "#reward-offline"
-                %p= reward.description
-                %p= reward.deliver_at.strftime("%m/%d/%Y") if reward.deliver_at
+            = render "hatchy/projects/show/rewards"

@@ -1,0 +1,31 @@
+.info.col-md-4
+  .row
+    .goal
+      %span.headline
+        %i.fa.fa-money
+        = number_to_currency @project.total_contributions
+      %p.text-muted= "from #{number_to_currency @project.goal}"
+    .contributions
+      %span.headline
+        %i.fa.fa-user-plus
+        = @project.total_contributors
+      %p.text-muted funders
+    - if @project.online?
+      .countdown
+        %i.fa.fa-clock-o 
+        %span#clock{data:{time:@project.expires_at.strftime("%m/%d/%Y %H:%M:%S")}}
+  %hr
+  .row
+    .col-md-12.info-card
+      .col-md-4
+        - if @project.user.profile_img?
+          = image_tag @project.user.profile_img.to_s, class:'img-circle', width:'60', height:'60'
+      .col-md-8
+        %h4= link_to @project.user.full_name, user_path(@project.user)
+        %p.small= "#{number_of_projects_created(@project.user)} #{number_of_projects_funded(@project.user)}"
+        = link_to @project.user.facebook_link do 
+          %i.fa.fa-facebook-official
+          facebook
+        = link_to @project.user.twitter_link do 
+          %i.fa.fa-twitter
+          twitter

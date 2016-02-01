@@ -1,0 +1,6 @@
+.header
+	%h1= @project.name
+	%p.text-muted
+		%span 
+			Created by:
+			%strong= @project.account.owner_name if @project.account.owner_name

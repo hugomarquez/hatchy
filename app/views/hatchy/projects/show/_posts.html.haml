@@ -1,0 +1,5 @@
+.col-md-12.posts
+	- @project.posts.order('created_at DESC').each do |post|
+		.post-card
+			= link_to post.title, project_post_path(@project, post)
+			%p= "Created at #{post.created_at.strftime("%m/%d/%Y - %l:%M%p")}"
