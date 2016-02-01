@@ -1,4 +1,4 @@
-var edit = (function(){
+var show = (function(){
 	// Cache DOM
 	var $time = $('#counter');
 
