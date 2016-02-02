@@ -3,7 +3,7 @@ class CreateHatchyProjectPosts < ActiveRecord::Migration
     create_table :hatchy_project_posts do |t|
     	t.belongs_to		:user
     	t.belongs_to		:project
-    	t.boolean				:private
+    	t.boolean				:private, default: false
     	t.text					:title
     	t.text					:content
       t.timestamps null: false

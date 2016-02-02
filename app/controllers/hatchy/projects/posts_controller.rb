@@ -1,5 +1,6 @@
 module Hatchy
   class Projects::PostsController < ApplicationController
+    skip_before_filter :authenticate_user!, only: [:show]
   	before_action :set_project, only:[:show, :destroy]
   	before_action :set_post, only:[:show, :destroy]
 

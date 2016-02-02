@@ -163,7 +163,7 @@ module Hatchy::ProjectStates
         :headline,
         :project_img, :video_url,
 
-        posts_attributes:[:user, :project, :title, :content],
+        posts_attributes:[:user, :project, :title, :content, :private],
         
         rewards_attributes:[
           :_destroy,  :deliver_at,        :description,

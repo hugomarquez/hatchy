@@ -1,7 +1,7 @@
 - content_for :javascripts do 
   = javascript_include_tag "hatchy/projects/show"
 
-.row.project-show
+#project-show.row.project-show
   %section
     .container
       = render "hatchy/projects/show/header"
@@ -15,7 +15,7 @@
               %li
                 = link_to "#description" do
                   %i.fa.fa-list
-                  %span Information
+                  %span Description
               %li
                 = link_to "#budget" do
                   %i.fa.fa-list

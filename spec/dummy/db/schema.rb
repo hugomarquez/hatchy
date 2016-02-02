@@ -126,11 +126,11 @@ ActiveRecord::Schema.define(version: 20160123012002) do
   create_table "hatchy_project_posts", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "project_id"
-    t.boolean  "private"
+    t.boolean  "private",    default: false
     t.text     "title"
     t.text     "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   add_index "hatchy_project_posts", ["user_id", "project_id"], name: "index_hatchy_project_posts_on_user_id_and_project_id"
