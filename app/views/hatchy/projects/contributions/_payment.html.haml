@@ -18,4 +18,5 @@
 			.form-group
 				.col-sm-offset-2.col-sm-10
 					= f.hidden_field :step, value:'payment_data'
-					= f.submit "Save" , class: 'btn btn-success btn-lg'
+					= f.submit "Save", class: 'btn btn-success btn-lg'
+					= link_to 'Back', edit_project_contribution_path, class:'btn btn-danger btn-lg'

@@ -1,6 +1,6 @@
 module Hatchy
   class Admin::ContributionsController < Admin::ApplicationController
-    before_action :set_contribution, only: [:show]
+    before_action :set_contribution, only: [:show, :destroy]
 
     # GET /contributions
     def index
@@ -12,6 +12,12 @@ module Hatchy
     
     # GET /contribution/:id
     def show
+    end
+
+    # DELETE /contribution/:id
+    def destroy
+      @contribution.destroy
+      redirect_to admin_contributions_path, notice: 'Contribution was successfully destroyed.'
     end
 
     private
