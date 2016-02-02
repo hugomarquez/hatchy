@@ -1,4 +1,4 @@
-var edit_contribution = (function(){
+var edit = (function(){
 	// Cache DOM
 	var $billing_row = $('#billing_data');
 	var $payment_row = $('#payment_data');

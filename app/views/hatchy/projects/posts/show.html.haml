@@ -3,6 +3,8 @@
     .container
       .header
         %h1= link_to @project.name, project_path(@project, preview:true, anchor:'posts')
+        - if @post.user == current_user
+          = link_to 'Edit', edit_project_post_path(@project, @post)
       .body
         %h2= @post.title
         %hr

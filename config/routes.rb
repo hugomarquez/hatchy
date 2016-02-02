@@ -18,7 +18,7 @@ Hatchy::Engine.routes.draw do
     end
 
     resources :posts, class_name:'Hatchy::ProjectPost', 
-      only:[:show, :destroy], controller:'projects/posts'
+      except:[:index, :create], controller:'projects/posts'
     resources :contributions, class_name:'Hatchy::Contribution', 
       except:[:index], controller:'projects/contributions'
 

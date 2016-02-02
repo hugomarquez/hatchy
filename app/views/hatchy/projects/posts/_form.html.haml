@@ -1,0 +1,15 @@
+= form_for [@project, @post], url: project_post_path, html:{class: "form-horizontal"} do |f|
+	= form_group_for f, :title do
+		.col-sm-8
+			= f.text_field :title, class: "form-control"
+	= form_group_for f, :content do
+		.col-sm-8
+			= f.text_area :content, class: "summernote"
+	.form-group
+		.col-sm-8.col-sm-offset-2
+			= f.check_box :private
+			= f.label :private
+	.form-group
+		.col-sm-offset-2.col-sm-10
+			= f.submit "Save Post" , class: 'btn btn-success'
+			= link_to "Cancel", project_post_path, class: 'btn btn-danger'

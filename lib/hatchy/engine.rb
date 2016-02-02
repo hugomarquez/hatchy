@@ -28,8 +28,9 @@ module Hatchy
         hatchy/dashboard.js
         hatchy/projects/show.js
         hatchy/projects/edit.js
-        hatchy/projects/contributions/new_contribution.js
-        hatchy/projects/contributions/edit_contribution.js
+        hatchy/projects/contributions/new.js
+        hatchy/projects/contributions/edit.js
+        hatchy/projects/posts/edit.js
         hatchy/users/edit.js
         hatchy/hatchy.css
         hatchy/admin.css

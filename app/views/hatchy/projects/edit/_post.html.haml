@@ -30,7 +30,7 @@
         - if post.persisted?
           .col-sm-8.col-md-offset-2.well
             .col-md-6
-              %p= post.title
+              %p= link_to post.title, project_post_path(@project, post)
               %p= "Created at #{post.created_at.strftime("%m/%d/%Y - %l:%M%p")}"
             .col-md-6
               .pull-right
