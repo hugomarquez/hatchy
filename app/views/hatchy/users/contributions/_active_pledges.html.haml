@@ -1,0 +1,25 @@
+.row
+  .row
+    .col-md-11
+      %h3 Active Pledges
+      %p.pull-right= "#{@active.count} Projects"
+  .row
+    .col-md-12
+      %table.table.table-condensed.table-striped
+        %thead
+          %tr
+            %th Projects I Backed
+            %th Pledged
+            %th Reward
+            %th Deadline
+            %th Messages
+        %tbody
+          - @active.each do |active|
+            %tr
+              %td
+                = image_tag active.project.project_img, size:'30x30'
+                = active.project.name
+              %td= number_to_currency active.value
+              %td= active.reward.description
+              %td= active.project.expires_at
+              %td= active.project.posts.count

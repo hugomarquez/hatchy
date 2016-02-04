@@ -1,0 +1,23 @@
+.row
+  .row
+    .col-md-11
+      %h3 Collected Pledges
+      %p.pull-right= "#{@collected.count} Projects"
+  .row
+    .col-md-12
+      %table.table.table-condensed.table-striped
+        %thead
+          %tr
+            %th Projects I Backed
+            %th Pledged
+            %th Reward
+            %th Got it!
+            %th Messages
+        %tbody
+          - @collected.each do |collected|
+            %tr
+              %td= collected.project.name
+              %td= number_to_currency collected.value
+              %td= collected.reward.description
+              %td TODO GOT IT
+              %td= collected.project.posts.count

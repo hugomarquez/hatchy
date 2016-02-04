@@ -9,7 +9,10 @@ Hatchy::Engine.routes.draw do
   devise_for :users, class_name:'Hatchy::User', module: :devise
 
   # *** Resources ***
-  resources :users, class_name:'Hatchy::User', only:[:show, :edit, :update]
+  resources :users, class_name:'Hatchy::User', only:[:show, :edit, :update] do 
+    resources :contributions, class_name:'Hatchy::Contribution', 
+      only:[:index], controller:'users/contributions'
+  end
   
   resources :projects, class_name:'Hatchy::Project', except:[:index] do 
     member do 
@@ -48,6 +51,7 @@ Hatchy::Engine.routes.draw do
         put 'send_to_rejected'
         put 'send_to_draft'
         put 'push_to_trash'
+        put 'send_to_successful'
       end
     end
 

@@ -7,4 +7,4 @@
           = render "hatchy/shared/project", project: contribution.project
     .section-footer
       %p.text-center
-        %a.btn.btn-primary.btn-lg.btn-outline{href:"#"} Explore All
+        = link_to 'Explore All', user_contributions_path(current_user), class: 'btn btn-primary btn-lg'
