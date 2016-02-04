@@ -36,13 +36,15 @@ module Hatchy
     end
 
     def total_percentage
-      contributions = total_contributions
-      percentage = (contributions / self.goal) * 100
+      contributions = total_contributions != nil ? total_contributions : 0
+      goal = self.goal != nil ? self.goal : 1
+      percentage = (contributions / goal) * 100
       if percentage >= 100
         100
       else
         percentage.round(2)
       end
     end
+    
   end
 end
