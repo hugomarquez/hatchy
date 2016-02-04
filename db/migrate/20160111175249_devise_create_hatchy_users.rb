@@ -7,6 +7,7 @@ class DeviseCreateHatchyUsers < ActiveRecord::Migration
       t.string      :facebook_link
       t.string      :twitter_link
       t.string      :other_link
+      t.string      :username,          null: false
       t.string      :first_name
       t.string      :last_name
       t.string      :about
@@ -56,6 +57,7 @@ class DeviseCreateHatchyUsers < ActiveRecord::Migration
     end
 
     add_index :hatchy_users, :email,                unique: true
+    add_index :hatchy_users, :username,             unique: true
     add_index :hatchy_users, :reset_password_token, unique: true
     add_index :hatchy_users, :country_id
     # add_index :hatchy_users, :confirmation_token,   unique: true

@@ -22,8 +22,8 @@ module Hatchy
 	      [
 	      	contribution.id,
 	      	link_to(contribution.project.name, admin_project_path(contribution.project)),
-	      	link_to(contribution.project.user.full_name, admin_user_path(contribution.project.user)),
-	      	link_to(contribution.user.full_name, admin_user_path(contribution.user)),
+	      	link_to(contribution.project.user.username, admin_user_path(contribution.project.user)),
+	      	link_to(contribution.user.username, admin_user_path(contribution.user)),
 	      	number_to_currency(contribution.reward.min_value),
 	      	number_to_currency(contribution.value),
 	      	contribution.status,

@@ -3,10 +3,10 @@
     %th Project
     %td= link_to @contribution.project.name, admin_project_path(@contribution.project.id)
     %th Project Owner
-    %td= link_to @contribution.project.user.full_name, admin_user_path(@contribution.project.user.id)
+    %td= link_to @contribution.project.user.username, admin_user_path(@contribution.project.user.id)
   %tr
     %th User
-    %td= link_to @contribution.user.full_name, admin_user_path(@contribution.user.id)
+    %td= link_to @contribution.user.username, admin_user_path(@contribution.user.id)
     %th Email
     %td= @contribution.user.email
   %tr

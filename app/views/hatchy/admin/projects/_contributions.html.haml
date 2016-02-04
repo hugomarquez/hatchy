@@ -11,7 +11,7 @@
     - contributions.order('created_at DESC').each do |contribution|
       %tr
         %td= link_to contribution.id, admin_contribution_path(contribution)
-        %td= link_to contribution.user.full_name, admin_user_path(contribution.user)
+        %td= link_to contribution.user.username, admin_user_path(contribution.user)
         %td= number_to_currency contribution.reward.min_value
         %td= number_to_currency contribution.value
         %td= contribution.status

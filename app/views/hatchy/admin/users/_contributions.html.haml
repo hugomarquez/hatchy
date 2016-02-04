@@ -16,7 +16,7 @@
     - contributions.each do |contribution|
       %tr
         %td= link_to contribution.project.name, admin_projects_path
-        %td= link_to contribution.user.full_name, admin_users_path
+        %td= link_to contribution.user.username, admin_users_path
         %td= number_to_currency contribution.reward.min_value
         %td= number_to_currency contribution.value
         %td= contribution.status

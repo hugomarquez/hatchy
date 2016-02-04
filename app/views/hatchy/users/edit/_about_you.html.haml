@@ -2,14 +2,16 @@
   .row
     .col-md-12
       = form_for @user, html:{class: "form-horizontal"} do |f|
+        = form_group_for f, :username do
+          .col-sm-5
+            = f.text_field :username, class: "form-control"
+            %p This is the name that users will see on your public profile
         = form_group_for f, :first_name do
           .col-sm-5
             = f.text_field :first_name, class: "form-control"
-            %p This is the name that users will see on your public profile
         = form_group_for f, :last_name do
           .col-sm-5
             = f.text_field :last_name, class: "form-control"
-            %p This is the name that users will see on your public profile
         = form_group_for f, :profile_image do
           .col-sm-5
             = image_tag @user.profile_img_url.to_s, width:70 if @user.profile_img

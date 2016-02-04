@@ -1,5 +1,7 @@
 var edit = (function(){
 	// Cache DOM
+  var $defaultSection = $('#about_you_dashboard');
+  var $defaultLink = $("#user_menu li a[href='#about_you']");
 	var $rowSections = $('.container-fluid .hidden');
 	var $currentRow = $('.container-fluid .hidden' + window.location.hash + '_dashboard');
 	var $menuLinks = $('#user_menu li a');
@@ -12,8 +14,13 @@ var edit = (function(){
 
 	// Functions
 	function showHashLocation() {
-    $currentRow.removeClass('hidden');
-    $($hashLink).parent().addClass('active');
+    if(window.location.hash == '') {
+      $defaultSection.removeClass('hidden');
+      $($defaultLink).parent().addClass('active');
+    } else {
+      $currentRow.removeClass('hidden');
+      $($hashLink).parent().addClass('active'); 
+    }
   }
 
   function toggleMenuActive() {

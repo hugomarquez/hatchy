@@ -23,7 +23,7 @@ module Hatchy
           project.id,
           check_box("Recommended", project.recommended, checked: project.recommended, disabled: true),
           link_to(project.name, project_path(project)),
-          link_to(project.user.full_name, admin_user_path(project.user)),
+          link_to(project.user.username, admin_user_path(project.user)),
           project.category.name,
           project.city,
           project.status,

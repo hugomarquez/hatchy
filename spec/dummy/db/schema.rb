@@ -181,6 +181,7 @@ ActiveRecord::Schema.define(version: 20160123012002) do
     t.string   "facebook_link"
     t.string   "twitter_link"
     t.string   "other_link"
+    t.string   "username",                               null: false
     t.string   "first_name"
     t.string   "last_name"
     t.string   "about"
@@ -213,5 +214,6 @@ ActiveRecord::Schema.define(version: 20160123012002) do
   add_index "hatchy_users", ["country_id"], name: "index_hatchy_users_on_country_id"
   add_index "hatchy_users", ["email"], name: "index_hatchy_users_on_email", unique: true
   add_index "hatchy_users", ["reset_password_token"], name: "index_hatchy_users_on_reset_password_token", unique: true
+  add_index "hatchy_users", ["username"], name: "index_hatchy_users_on_username", unique: true
 
 end

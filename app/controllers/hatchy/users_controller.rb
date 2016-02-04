@@ -20,7 +20,8 @@ module Hatchy
       if @user.update(user_params)
         redirect_to edit_user_path(@user, anchor: params[:anchor]), notice:'User was successfully updated.'
       else
-        render :edit
+        redirect_to edit_user_path(@user, anchor: params[:anchor])
+        flash[:error] = @user.errors.full_messages.to_sentence
       end
     end
 
@@ -33,7 +34,7 @@ module Hatchy
         :document, :phone, :mobile, :subs_projects,
         :first_name, :last_name, :locale, :newsletter, :profile_img, 
         :cover_img, :facebook_link, :twitter_link, 
-        :other_link, :about,
+        :other_link, :about, :username,
         bank_account_attributes:
           [:bank_id, :user_id, :account, :account_digit]
       )

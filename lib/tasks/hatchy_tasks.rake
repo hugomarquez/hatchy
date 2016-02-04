@@ -12,7 +12,15 @@ namespace :hatchy do
 
   desc "Create a default admin user"
     task :create_admin_user => :environment do 
-      Hatchy::User.create(email:'admin@example.com', password:'password', password_confirmation:'password', first_name:'Default', last_name:'Admin', admin: true)
+      Hatchy::User.create(
+        username:'admin',
+        email:'admin@example.com', 
+        password:'password', 
+        password_confirmation:'password', 
+        first_name:'Default', 
+        last_name:'Admin', 
+        admin: true
+      )
       puts "    New user has been created successfully."
       puts
       puts "    E-Mail Address..: admin@example.com"

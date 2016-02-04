@@ -14,6 +14,9 @@ module Hatchy
     describe "validations" do 
       it { should validate_presence_of(:email) }
       it { should validate_uniqueness_of(:email) }
+      it { should validate_presence_of(:username) }
+      it { should validate_uniqueness_of(:username) }
+      it { should_not allow_value("test@test").for(:username) }
       it { should accept_nested_attributes_for(:bank_account).allow_destroy(true) }
     end
 

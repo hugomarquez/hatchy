@@ -20,6 +20,7 @@ FactoryGirl.define do
     phone "01800"
     mobile "044800"
     sequence(:email) { |n| "#{Random.new_seed}@#{n}.com" }
+    sequence(:username) { |n| "#{Random.new_seed}#{n}" }
 
     trait :without_bank_data do
       bank_account { nil }
