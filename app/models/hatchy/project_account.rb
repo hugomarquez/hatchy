@@ -1,5 +1,7 @@
 module Hatchy
   class ProjectAccount < ActiveRecord::Base
+  	ACCOUNT_TYPE = ['Individuals', 'Legal Person']
+
     belongs_to :bank,     class_name:'Hatchy::Bank'
     belongs_to :project,  class_name:'Hatchy::Project'
 

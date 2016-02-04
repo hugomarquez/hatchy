@@ -15,7 +15,7 @@
             %h4.text-center Account
             = form_group_for a, :account_type do 
               .col-sm-8
-                = a.select(:account_type, options_for_select(['Individuals',['Legal Person']]),{}, class: "form-control", disabled: form_disabled(f,:account_type))
+                = a.select :account_type, Hatchy::ProjectAccount::ACCOUNT_TYPE, {}, class: 'form-control', disabled: form_disabled(f, :account_type)
             = form_group_for a, :owner_name do 
               .col-sm-8
                 = a.text_field :owner_name, class: "form-control", required:true, disabled: form_disabled(f, :owner_name)
