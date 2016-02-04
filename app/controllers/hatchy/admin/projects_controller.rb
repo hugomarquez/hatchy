@@ -32,16 +32,27 @@ module Hatchy
       end
     end
 
-    [:send_to_approved, :push_to_online, :send_to_rejected, :send_to_draft, :push_to_trash].each do |m|
+    def destroy
+      if @project.trash?
+        @project.destroy
+        redirect_to admin_projects_path
+        flash[:notice] = "Project was successfully destroyed."
+      else
+        redirect_to admin_project_path(@project)
+        flash[:error] = "Project needs to have trash status to be destroyed"
+      end
+    end
+
+    [:send_to_approved, :push_to_online, :send_to_rejected, :send_to_draft, :push_to_trash, :send_to_successful].each do |m|
       define_method m do 
         set_project
         @project.send("#{m}")
-        if !@project.valid?
-          redirect_to admin_project_path(@project)
-          flash[:error] = @project.errors.full_messages.to_sentence
-        else
+        if @project.errors.empty?
           @project.save
           redirect_to admin_project_path(@project), notice: "Project was #{m.to_s.humanize}."
+        else
+          redirect_to admin_project_path(@project)
+          flash[:error] = @project.errors.full_messages.to_sentence
         end
       end
     end

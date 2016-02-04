@@ -38,15 +38,27 @@ module Hatchy::ProjectStates
       if self.status == "analysis"
         self.status = "approved"
       else
-        self.errors[:status] << "Project must be in analysis first to be approved"
+        errors[:status] << "Project must be in analysis first to be approved"
       end
     end
 
     def push_to_online
-      if self.status == "approved"
+      if self.status == "approved" or self.status == "successful"
         self.status = "online"
       else
-        self.errors[:status] << "Project must be approved first to be online"
+        errors[:status] << "Project must be approved first to be online"
+      end
+    end
+
+    def send_to_successful
+      if self.status == "online"
+        if self.total_percentage == 100
+          self.status = "successful"
+        else
+          errors[:status] << "Project must have 100% of the goal"
+        end
+      else
+        errors[:status] << "Project must be online to be successful"
       end
     end
 
@@ -54,7 +66,7 @@ module Hatchy::ProjectStates
       if self.status == "draft" or self.status == "rejected" or self.status == "analysis"
         self.status = "trash"
       else
-        self.errors[:status] << "Project must be in draft, rejected or analysis first to be deleted"
+        errors[:status] << "Project must be in draft, rejected or analysis first to be deleted"
       end
     end
 
