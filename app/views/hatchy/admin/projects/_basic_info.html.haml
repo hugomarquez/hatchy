@@ -19,13 +19,16 @@
     %th Name
     %td
       = best_in_place @project, :name, url: admin_project_path
-      = link_to @project do 
+      = link_to @project, target:"_blank" do 
         %i.fa.fa-share-square-o
+      %i.fa.fa-pencil
     %th Category
     %td= link_to @project.category.name, admin_category_path(@project.category)
   %tr
     %th Recommended
-    %td= best_in_place @project, :recommended, as: :checkbox, url: admin_project_path
+    %td
+      = best_in_place @project, :recommended, as: :checkbox, url: admin_project_path
+      %i.fa.fa-pencil
     %th City
     %td= @project.city
   %tr

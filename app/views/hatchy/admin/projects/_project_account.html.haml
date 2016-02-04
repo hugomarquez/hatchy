@@ -3,32 +3,58 @@
     %th Account Type
     %td= account.account_type
     %th Bank
-    %td= link_to account.bank.name, admin_bank_path(account.bank)
+    %td
+      = best_in_place @project.account, :bank_id, url: admin_project_path, as: :select, collection: Hatchy::Bank.all.map { |i| [i.id, i.name] },param:"project[account_attributes][id]=#{@project.account.id}&project[account_attributes]"
+      = link_to admin_bank_path(account.bank), target:"_blank" do 
+        %i.fa.fa-share-square-o
+      %i.fa.fa-pencil
   %tr
     %th Owner Name
-    %td= account.owner_name
+    %td
+      = best_in_place @project.account, :owner_name, url: admin_project_path, param:"project[account_attributes][id]=#{@project.account.id}&project[account_attributes]"
+      %i.fa.fa-pencil
     %th Owner Document
-    %td= account.owner_document
+    %td
+      = best_in_place @project.account, :owner_document, url: admin_project_path, param:"project[account_attributes][id]=#{@project.account.id}&project[account_attributes]"
+      %i.fa.fa-pencil
   %tr
     %th Email
-    %td= account.email
+    %td
+      = best_in_place @project.account, :email, url: admin_project_path, param:"project[account_attributes][id]=#{@project.account.id}&project[account_attributes]"
+      %i.fa.fa-pencil
     %th Phone
-    %td= account.phone
+    %td
+      = best_in_place @project.account, :phone, url: admin_project_path, param:"project[account_attributes][id]=#{@project.account.id}&project[account_attributes]"
+      %i.fa.fa-pencil
   %tr
     %th Account
-    %td= account.account
+    %td
+      = best_in_place @project.account, :account, url: admin_project_path, param:"project[account_attributes][id]=#{@project.account.id}&project[account_attributes]"
+      %i.fa.fa-pencil
     %th Account Digit
-    %td= account.account_digit
+    %td
+      = best_in_place @project.account, :account_digit, url: admin_project_path, param:"project[account_attributes][id]=#{@project.account.id}&project[account_attributes]"
+      %i.fa.fa-pencil
   %tr
     %th Address State
-    %td= account.address_state
+    %td
+      = best_in_place @project.account, :address_state, url: admin_project_path, param:"project[account_attributes][id]=#{@project.account.id}&project[account_attributes]"
+      %i.fa.fa-pencil
     %th Address City
-    %td= account.address_city
+    %td
+      = best_in_place @project.account, :address_city, url: admin_project_path, param:"project[account_attributes][id]=#{@project.account.id}&project[account_attributes]"
+      %i.fa.fa-pencil
   %tr
     %th Address Street
-    %td= account.address_street
+    %td
+      = best_in_place @project.account, :address_street, url: admin_project_path, param:"project[account_attributes][id]=#{@project.account.id}&project[account_attributes]"
+      %i.fa.fa-pencil
     %th Address Number
-    %td= account.address_number
+    %td
+      = best_in_place @project.account, :address_number, url: admin_project_path, param:"project[account_attributes][id]=#{@project.account.id}&project[account_attributes]"
+      %i.fa.fa-pencil
   %tr
     %th Address Zip
-    %td= account.address_zip
+    %td
+      = best_in_place @project.account, :address_zip, url: admin_project_path, param:"project[account_attributes][id]=#{@project.account.id}&project[account_attributes]"
+      %i.fa.fa-pencil

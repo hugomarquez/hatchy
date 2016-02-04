@@ -63,7 +63,17 @@ module Hatchy
     end
 
     def project_params
-      params[:project].permit(:name, :status, :recommended)
+      params[:project].permit(
+        :name, :status, :recommended,
+        
+        account_attributes:[
+          :account,       :account_digit,     :account_type,
+          :address_city,  :address_number,    :address_state,
+          :address_street,:address_zip,       :bank_id,           
+          :email,         :owner_document,    :owner_name,
+          :phone,         :project_id,        :id
+        ]
+      )
     end
   end
 end

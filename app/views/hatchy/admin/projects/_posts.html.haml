@@ -9,7 +9,7 @@
   %tbody
     - posts.order('created_at DESC').each do |post|
       %tr
-        %td= post.id
+        %td= link_to post.id, project_post_path(@project, post)
         %td= check_box "Private", post.private, checked: post.private, disabled:true
         %td= post.created_at.strftime("%m/%d/%Y - %l:%M%p")
         %td= post.title

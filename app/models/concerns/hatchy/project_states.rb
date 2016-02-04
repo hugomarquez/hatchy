@@ -165,7 +165,7 @@ module Hatchy::ProjectStates
           :address_city,  :address_number,    :address_state,
           :address_street,:address_zip,       :bank_id,           
           :email,         :owner_document,    :owner_name,
-          :phone,         :project_id
+          :phone,         :project_id,        :id
         ]
       ]
     end
