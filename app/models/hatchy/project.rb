@@ -19,6 +19,7 @@ module Hatchy
 
     scope :recommended, -> { where(recommended: true, status:'online') }
     scope :recent, -> { where(online_date: 5.days.ago.. Time.current, status:'online') }
+    scope :user_recent, ->(current_user) { where(user:current_user, updated_at: 5.days.ago.. Time.current) }
     scope :online_category, -> (category_id) {where("status='online' AND category_id= ?", category_id)}
 
     def video

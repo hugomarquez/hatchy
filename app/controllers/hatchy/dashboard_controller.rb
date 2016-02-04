@@ -1,8 +1,8 @@
 module Hatchy
   class DashboardController < ApplicationController
     def index
-      @my_projects = current_user.projects
-      @contributions = current_user.contributions
+      @my_projects = Hatchy::Project.user_recent(current_user)
+      @contributions = Hatchy::Contribution.user_recent(current_user)
     end
   end
 end

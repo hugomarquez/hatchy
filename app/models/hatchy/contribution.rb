@@ -14,6 +14,11 @@ module Hatchy
     #validate :cant_contribute_if_max_contribution
     #validate :validate_card, on: :create
 
+    scope :recent, -> { where(updated_at: 5.days.ago.. Time.current) }
+    scope :user_recent, ->(current_user) { 
+      where(user: current_user, updated_at: 5.days.ago.. Time.current)
+    }
+
     private
 
     def reward_is_from_project
