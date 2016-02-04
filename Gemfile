@@ -10,7 +10,6 @@ group :test do
   gem "rack-mini-profiler", "0.9.7"
   gem "shoulda"
   gem 'simplecov'
-  gem 'web-console', '~> 2.0'
   gem 'coveralls'
   gem 'thin'
 end
