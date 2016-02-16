@@ -1,9 +1,9 @@
 #rewards.rewards.row
-	- @project.rewards.each do |reward|
-		.reward-card
-			- if @project.online? && !@project.failed?
-				%h3= link_to reward.min_value, new_project_contribution_path(@project, reward_id: reward.id)
-			-else
-				%h3= link_to reward.min_value, "#reward-offline"
-			%p= reward.description
-			%p= reward.deliver_at.strftime("%m/%d/%Y") if reward.deliver_at
+  - @project.rewards.each do |reward|
+    .reward-card
+      - if @project.online? && !@project.failed?
+        %h3= link_to reward.min_value, new_project_contribution_path(@project, reward_id: reward.id)
+      -else
+        %h3= link_to reward.min_value, "#reward-offline"
+      %p= reward.description
+      %p= reward.deliver_at.strftime("%m/%d/%Y") if reward.deliver_at

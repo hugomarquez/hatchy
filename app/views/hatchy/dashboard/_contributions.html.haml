@@ -1,10 +1,11 @@
 %section
   .container
     %h2.text-center Recent Contributions
-    .section-content
-      .owl-carousel#owl-contributions
-        - @contributions.each do |contribution|
-          = render "hatchy/shared/project", project: contribution.project
+    - unless @contributions.empty?
+      .section-content
+        .owl-carousel#owl-contributions
+          - @contributions.each do |contribution|
+            = render "hatchy/shared/small_project", project: contribution.project
     .section-footer
       %p.text-center
         = link_to 'Explore All', user_contributions_path(current_user), class: 'btn btn-primary btn-lg'

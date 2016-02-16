@@ -20,17 +20,19 @@ module Hatchy
     def create
       @contribution = @project.contributions.new(contribution_params)
       @contribution.user = current_user
+      @contribution.update_billing_info
       if @contribution.valid?
         @contribution.save
         redirect_to edit_project_contribution_path(@project, @contribution), notice: "Contribution saved successfully"
       else
-        redirect_to root_path
+        redirect_to project_path(@contribution.project)
         flash[:error] = @contribution.errors.full_messages.to_sentence
       end
     end
 
     def update
       @contribution.ip_address = request.remote_ip
+      @contribution.update_user_billing_info
       if @contribution.update(contribution_params)
         redirect_to edit_project_contribution_path(@project, @contribution, anchor: params[:anchor]), notice: 'Contribution was successfully updated.'
       else
