@@ -85,6 +85,7 @@ ActiveRecord::Schema.define(version: 20160123012002) do
   end
 
   add_index "hatchy_contributions", ["country_id"], name: "index_hatchy_contributions_on_country_id"
+  add_index "hatchy_contributions", ["project_id", "user_id"], name: "index_hatchy_contributions_on_project_id_and_user_id", unique: true
   add_index "hatchy_contributions", ["project_id"], name: "index_hatchy_contributions_on_project_id"
   add_index "hatchy_contributions", ["reward_id"], name: "index_hatchy_contributions_on_reward_id"
   add_index "hatchy_contributions", ["user_id"], name: "index_hatchy_contributions_on_user_id"

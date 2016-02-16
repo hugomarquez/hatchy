@@ -28,5 +28,6 @@ class CreateHatchyContributions < ActiveRecord::Migration
     add_index :hatchy_contributions, :user_id
     add_index :hatchy_contributions, :reward_id
     add_index :hatchy_contributions, :country_id
+    add_index :hatchy_contributions, [:project_id, :user_id], unique: true
   end
 end
