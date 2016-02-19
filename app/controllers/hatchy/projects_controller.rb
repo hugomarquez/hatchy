@@ -25,11 +25,7 @@ module Hatchy
           unless params[:preview]
             redirect_to edit_project_path(@project, anchor:'basic')
           end
-          if !@project.online?
-            flash[:notice] = "Your project status: #{@project.status}"
-          else
-            flash[:info] = "This project is online"
-          end
+          flash[:notice] = t('controllers.hatchy.projects.show.project_status') + ": #{@project.status}"
         end
       end
     end
@@ -41,7 +37,7 @@ module Hatchy
       authorize @project
       if @project.valid?
         @project.save
-        redirect_to edit_project_path(@project, anchor: 'basic'), notice: "Project saved successfully"
+        redirect_to edit_project_path(@project, anchor: 'basic'), notice:t('controllers.hatchy.projects.create.notice')
       else
         render :new
       end
@@ -52,7 +48,7 @@ module Hatchy
     def update
       authorize @project
       if @project.update(project_params)
-        redirect_to edit_project_path(@project, anchor: params[:anchor]), notice: 'Project was successfully updated.'
+        redirect_to edit_project_path(@project, anchor: params[:anchor]), notice:t('controllers.hatchy.projects.update.notice')
       else
         redirect_to edit_project_path(@project, anchor: params[:anchor])
         flash[:error] = @project.errors.full_messages.to_sentence
@@ -76,7 +72,7 @@ module Hatchy
       @project.push_to_online
       if @project.valid?
         @project.save
-        redirect_to project_path(@project), notice:'Project published successfully'
+        redirect_to project_path(@project), notice:t('controllers.hatchy.projects.publish.notice')
       else
         redirect_to edit_project_path(@project, anchor:'basic')
         flash[:error] = @project.errors.full_messages.to_sentence

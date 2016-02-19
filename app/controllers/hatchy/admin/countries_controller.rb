@@ -25,7 +25,7 @@ module Hatchy
       @country = Hatchy::Country.new(country_params)
       if @country.valid?
         @country.save
-        redirect_to admin_country_path(@country), notice: "Country saved successfully"
+        redirect_to admin_country_path(@country), notice:t('controllers.hatchy.admin.countries.create.notice')
       else
         render :new
       end
@@ -35,7 +35,7 @@ module Hatchy
     # PUT /country/:id
     def update
       if @country.update(country_params)
-        redirect_to admin_country_path(@country), notice: 'Country was successfully updated.'
+        redirect_to admin_country_path(@country), notice:t('controllers.hatchy.admin.countries.update.notice')
       else
         render :edit
         flash[:error] = @country.errors.full_messages.to_sentence
@@ -45,7 +45,7 @@ module Hatchy
     # DELETE /country/1
     def destroy
       @country.destroy
-      redirect_to admin_countries_path, notice: 'Country was successfully destroyed.'
+      redirect_to admin_countries_path, notice:t('controllers.hatchy.admin.countries.destroy.notice')
     end
 
     private

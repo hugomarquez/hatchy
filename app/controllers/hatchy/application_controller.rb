@@ -9,7 +9,7 @@ module Hatchy
 
     private
     def user_not_authorized
-      flash[:error] = "You are not authorized to perform this action."
+      flash[:error] = t('controllers.hatchy.application.not_authorized')
       redirect_to request.headers["Referer"] || root_path
     end
 

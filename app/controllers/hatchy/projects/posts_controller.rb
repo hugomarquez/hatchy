@@ -12,7 +12,7 @@ module Hatchy
 
     def update
       if @post.update(post_params)
-        redirect_to project_post_path(@project, @post), notice: 'Post was successfully updated.'
+        redirect_to project_post_path(@project, @post), notice: t('controllers.hatchy.projects.posts.update.notice')
       else
         redirect_to edit_project_post_path(@project, @post)
         flash[:error] = @post.errors.full_messages.to_sentence
@@ -22,7 +22,7 @@ module Hatchy
   	def destroy
   		@post.destroy
   		redirect_to edit_project_path(@project, anchor: 'post')
-  		flash[:notice] = "Post was successfully destroyed."
+  		flash[:notice] = t('controllers.hatchy.projects.posts.destroy.notice')
   	end
 
   	private

@@ -25,7 +25,7 @@ module Hatchy
       @bank = Hatchy::Bank.new(bank_params)
       if @bank.valid?
         @bank.save
-        redirect_to admin_bank_path(@bank), notice: "Bank saved successfully"
+        redirect_to admin_bank_path(@bank), notice:t('controllers.hatchy.admin.banks.create.notice')
       else
         render :new
       end
@@ -35,7 +35,7 @@ module Hatchy
     # PUT /bank/:id
     def update
       if @bank.update(bank_params)
-        redirect_to admin_bank_path(@bank), notice: 'Bank was successfully updated.'
+        redirect_to admin_bank_path(@bank), notice:t('controllers.hatchy.admin.banks.update.notice')
       else
         render :edit
         flash[:error] = @bank.errors.full_messages.to_sentence
@@ -45,7 +45,7 @@ module Hatchy
     # DELETE /bank/1
     def destroy
       @bank.destroy
-      redirect_to admin_banks_path, notice: 'Bank was successfully destroyed.'
+      redirect_to admin_banks_path, notice:t('controllers.hatchy.admin.banks.destroy.notice')
     end
 
     private

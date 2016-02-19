@@ -23,7 +23,7 @@ module Hatchy
       @contribution.update_billing_info
       if @contribution.valid?
         @contribution.save
-        redirect_to edit_project_contribution_path(@project, @contribution), notice: "Contribution saved successfully"
+        redirect_to edit_project_contribution_path(@project, @contribution), notice: t('controllers.hatchy.projects.contributions.create.notice')
       else
         redirect_to project_path(@contribution.project)
         flash[:error] = @contribution.errors.full_messages.to_sentence
@@ -34,7 +34,7 @@ module Hatchy
       @contribution.ip_address = request.remote_ip
       @contribution.update_user_billing_info
       if @contribution.update(contribution_params)
-        redirect_to edit_project_contribution_path(@project, @contribution, anchor: params[:anchor]), notice: 'Contribution was successfully updated.'
+        redirect_to edit_project_contribution_path(@project, @contribution, anchor: params[:anchor]), notice: t('controllers.hatchy.projects.contributions.update.notice')
       else
         render :edit
         flash[:error] = @contribution.errors.full_messages.to_sentence

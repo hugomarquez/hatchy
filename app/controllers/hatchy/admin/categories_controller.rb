@@ -25,7 +25,7 @@ module Hatchy
       @category = Hatchy::Category.new(category_params)
       if @category.valid?
         @category.save
-        redirect_to admin_category_path(@category), notice: "Category saved successfully"
+        redirect_to admin_category_path(@category), notice:t('controllers.hatchy.admin.categories.create.notice')
       else
         render :new
       end
@@ -35,7 +35,7 @@ module Hatchy
     # PUT /category/:id
     def update
       if @category.update(category_params)
-        redirect_to admin_category_path(@category), notice: 'Category was successfully updated.'
+        redirect_to admin_category_path(@category), notice:t('controllers.hatchy.admin.categories.update.notice')
       else
         render :edit
         flash[:error] = @category.errors.full_messages.to_sentence
@@ -45,7 +45,7 @@ module Hatchy
     # DELETE /category/1
     def destroy
       @category.destroy
-      redirect_to admin_categories_path, notice: 'Category was successfully destroyed.'
+      redirect_to admin_categories_path, notice:t('controllers.hatchy.admin.categories.destroy.notice')
     end
 
     private

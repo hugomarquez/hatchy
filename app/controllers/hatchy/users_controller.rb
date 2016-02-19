@@ -18,7 +18,7 @@ module Hatchy
     def update
       authorize @user
       if @user.update(user_params)
-        redirect_to edit_user_path(@user, anchor: params[:anchor]), notice:'User was successfully updated.'
+        redirect_to edit_user_path(@user, anchor: params[:anchor]), notice:t('controllers.hatchy.users.update.notice')
       else
         redirect_to edit_user_path(@user, anchor: params[:anchor])
         flash[:error] = @user.errors.full_messages.to_sentence

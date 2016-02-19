@@ -17,7 +17,7 @@ module Hatchy
     # DELETE /contribution/:id
     def destroy
       @contribution.destroy
-      redirect_to admin_contributions_path, notice: 'Contribution was successfully destroyed.'
+      redirect_to admin_contributions_path, notice:t('controllers.hatchy.admin.contributions.destroy.notice')
     end
 
     private

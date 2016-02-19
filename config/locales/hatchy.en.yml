@@ -143,4 +143,90 @@ en:
         mobile: Mobile
         email: Email
   controllers:
+    hatchy:
+      application:
+        not_authorized: You are not authorized to perform this action.
+      categories/subscriptions:
+      projects:
+        show:
+          project_status: Your project status
+        create:
+          notice: Project saved successfully.
+        update:
+          notice: Project was successfully updated.
+        publish:
+          notice: Project published successfully.
+        contributions:
+          create:
+            notice: Contribution saved successfully.
+          update:
+            notice: Contribution was successfully updated.
+        posts:
+          update:
+            notice: Post was successfully updated.
+          destroy:
+            notice: Post was successfully destroyed.
+      users:
+        update:
+          notice: User was successfully updated.
+        contributions:
+      admin:
+        application:
+          not_authorized: You are not authorized to perform this action.
+        announcements:
+          create:
+            notice: Announcement saved successfully.
+          update:
+            notice: Announcement was successfully updated.
+          destroy:
+            notice: Announcement was successfully destroyed.
+        banks:
+          create:
+            notice: Bank saved successfully.
+          update:
+            notice: Bank was successfully updated.
+          destroy:
+            notice: Bank was successfully destroyed.
+        categories:
+          create:
+            notice: Category saved successfully.
+          update:
+            notice: Category was successfully updated.
+          destroy:
+            notice: Category was successfully destroyed.
+        contributions:
+          destroy:
+            notice: Contribution was successfully destroyed.
+        countries:
+          create:
+            notice: Country saved successfully.
+          update:
+            notice: Country was successfully updated.
+          destroy:
+            notice: Country was successfully destroyed.
+        projects:
+          update:
+            notice: Project was successfully updated.
+          destroy:
+            notice: Project was successfully destroyed.
+            status_trash: Project needs to have trash status to be destroyed.
+        users:
+          update:
+            notice: User was successfully updated.
+          destroy:
+            notice: User was successfully destroyed.
   views:
+    hatchy:
+      admin:
+      dashboard:
+      home:
+      projects:
+      shared:
+      users:
+  layouts:
+    hatchy:
+      admin:
+        layout:
+      application:
+      footer:
+      navbar:

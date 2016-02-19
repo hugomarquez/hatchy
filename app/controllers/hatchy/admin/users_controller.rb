@@ -22,7 +22,7 @@ module Hatchy
     # PUT /user/:id
     def update
       if @user.update(user_params)
-        redirect_to admin_user_path(@user), notice: 'User was successfully updated.'
+        redirect_to admin_user_path(@user), notice:t('controllers.hatchy.admin.users.update.notice')
       else
         render :edit
         flash[:error] = @user.errors.full_messages.to_sentence
@@ -32,7 +32,7 @@ module Hatchy
     # DELETE /user/1
     def destroy
       @user.destroy
-      redirect_to admin_users_path, notice: 'User was successfully destroyed.'
+      redirect_to admin_users_path, notice:t('controllers.hatchy.admin.users.destroy.notice')
     end
 
     private

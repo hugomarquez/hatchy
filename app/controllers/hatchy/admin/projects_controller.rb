@@ -23,7 +23,7 @@ module Hatchy
     def update
       respond_to do |format|
         if @project.update_attributes(project_params)
-          format.html {redirect_to admin_project_path(@project), notice: 'Project was successfully updated.'}
+          format.html {redirect_to admin_project_path(@project), notice:t('controllers.hatchy.admin.projects.create.notice')}
           format.json {head :ok}
         else
           format.html {render :show, flash[:error] = @project.errors.full_messages.to_sentence}
@@ -36,10 +36,10 @@ module Hatchy
       if @project.trash?
         @project.destroy
         redirect_to admin_projects_path
-        flash[:notice] = "Project was successfully destroyed."
+        flash[:notice] = t('controllers.hatchy.admin.projects.destroy.notice')
       else
         redirect_to admin_project_path(@project)
-        flash[:error] = "Project needs to have trash status to be destroyed"
+        flash[:error] = t('controllers.hatchy.admin.projects.destroy.status_trash')
       end
     end
 
