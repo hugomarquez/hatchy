@@ -24,16 +24,12 @@ module Hatchy
     end
 
     describe "#total_contributors" do 
-      it "Should count all contributions without repeating" do 
+      it "Should count all contributions" do 
         user = FactoryGirl.create(:hatchy_user,:without_bank_data)
-        contribution1 = FactoryGirl.create(:hatchy_contribution,:without_project, :without_user, :without_reward)
-        contribution2 = FactoryGirl.create(:hatchy_contribution,:without_project, :without_user, :without_reward)
-        contribution1.user = user 
-        contribution2.user = user
-        contribution1.project = project
-        contribution2.project = project
-        contribution1.save
-        contribution2.save
+        contribution = FactoryGirl.create(:hatchy_contribution,:without_project, :without_user, :without_reward)
+        contribution.user = user
+        contribution.project = project
+        contribution.save
         project.save
         expect(project.total_contributors).to eq 1
       end
@@ -42,16 +38,12 @@ module Hatchy
     describe "#total_contributions" do 
       it "Should sum all contributions values that are pending" do 
         user = FactoryGirl.create(:hatchy_user,:without_bank_data)
-        contribution1 = FactoryGirl.create(:hatchy_contribution,:without_project, :without_user, :without_reward)
-        contribution2 = FactoryGirl.create(:hatchy_contribution,:without_project, :without_user, :without_reward)
-        contribution1.user = user
-        contribution2.user = user
-        contribution1.project = project
-        contribution2.project = project
-        contribution1.save
-        contribution2.save
+        contribution = FactoryGirl.create(:hatchy_contribution,:without_project, :without_user, :without_reward)
+        contribution.user = user
+        contribution.project = project
+        contribution.save
         project.save
-        expect(project.total_contributions).to eq 20.0
+        expect(project.total_contributions).to eq 10.0
       end
     end
 

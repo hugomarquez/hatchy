@@ -10,5 +10,10 @@ module Hatchy
       it{ is_expected.to belong_to :project}
       it{ is_expected.to belong_to :country}
     end
+
+    describe "validations" do 
+      it { should validate_numericality_of(:value)}
+      it {should_not allow_value(9.00).for(:value)}
+    end
   end
 end
