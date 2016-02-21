@@ -5,7 +5,6 @@ module Hatchy::ProjectStates
 
     before_create :send_to_draft
     validate :with_status
-    before_save :set_dates, if: lambda { |project| project.online? }
     after_create :create_empty_reward
 
     def create_empty_reward
@@ -45,6 +44,7 @@ module Hatchy::ProjectStates
     def push_to_online
       if self.status == "approved" or self.status == "successful"
         self.status = "online"
+        set_dates
       else
         errors[:status] << "Project must be approved first to be online"
       end
