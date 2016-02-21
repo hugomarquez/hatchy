@@ -218,6 +218,25 @@ en:
   views:
     hatchy:
       admin:
+        announcements:
+          edit: Edit Announcement
+          new: New Announcement
+        banks:
+          new: New Bank
+        categories:
+          new: New Category
+        countries:
+          new: New Country
+        dashboard:
+          index:
+            title: Dashboard
+            subtitle: Hatchy Administration
+        shared:
+          navtabs:
+            tabs:
+              index: Index
+              add_new: Add New
+              edit: Edit
       dashboard:
       home:
       projects:
