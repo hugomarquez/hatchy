@@ -130,6 +130,7 @@ module Hatchy
 
       describe "#push_to_online" do 
         it "should change project status to online" do 
+          approved.online_days = 60
           approved.push_to_online
           expect(approved.status).to eq "online"
         end
